@@ -3,1296 +3,1367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Análisis de Competencia — Nubceo</title>
+  <title>Mapa de Competencia — Nubceo</title>
   <style>
     :root {
-      --nub-primary:   #1A2B4A;
-      --nub-accent:    #00C2A8;
-      --nub-accent2:   #0072FF;
-      --nub-bg:        #F4F7FB;
-      --nub-card:      #FFFFFF;
-      --nub-border:    #E2E8F0;
-      --nub-text:      #1E293B;
-      --nub-muted:     #64748B;
-      --nub-danger:    #EF4444;
-      --nub-warning:   #F59E0B;
-      --nub-success:   #10B981;
-      --nub-purple:    #7C3AED;
+      --nub-primary:  #0F2240;
+      --nub-accent:   #00C2A8;
+      --nub-blue:     #0072FF;
+      --nub-bg:       #F0F4FA;
+      --nub-card:     #FFFFFF;
+      --nub-border:   #DDE4EF;
+      --nub-text:     #1E293B;
+      --nub-muted:    #64748B;
+      --nub-danger:   #DC2626;
+      --nub-warning:  #D97706;
+      --nub-success:  #059669;
+      --nub-purple:   #7C3AED;
+      --nub-pink:     #DB2777;
 
-      --c-auditar:  #0F4C81;
-      --c-atana:    #0E7490;
-      --c-concbot:  #6D28D9;
-      --c-cucuru:   #D97706;
-      --c-pcbank:   #065F46;
-      --c-syc:      #9D174D;
-      --c-concliac: #1E40AF;
+      --c1:#0F4C81; --c2:#0E7490; --c3:#5B21B6; --c4:#B45309;
+      --c5:#065F46; --c6:#9D174D; --c7:#1E40AF; --c8:#0F766E;
+      --c9:#92400E; --c10:#166534;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--nub-bg);
       color: var(--nub-text);
       line-height: 1.6;
+      font-size: 15px;
     }
 
-    /* ── HEADER ── */
+    /* ══ HEADER ══ */
     header {
-      background: linear-gradient(135deg, var(--nub-primary) 0%, #0F3460 60%, #16213E 100%);
+      background: linear-gradient(135deg, #0F2240 0%, #0A3060 55%, #0F4C81 100%);
       color: #fff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 24px rgba(0,0,0,.35);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 4px 28px rgba(0,0,0,.4);
     }
-    .header-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 18px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+    .hdr-top {
+      max-width: 1440px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
     }
-    .logo-wrap { display: flex; align-items: center; gap: 14px; }
-    .logo-icon {
-      width: 44px; height: 44px;
+    .hdr-brand { display: flex; align-items: center; gap: 14px; }
+    .hdr-logo {
+      width: 46px; height: 46px; border-radius: 12px;
       background: var(--nub-accent);
-      border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 900; color: var(--nub-primary);
+      font-size: 1.4rem; font-weight: 900; color: #0F2240; letter-spacing: -1px;
     }
-    .logo-text h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.3px; }
-    .logo-text p { font-size: .78rem; color: rgba(255,255,255,.65); margin-top: 1px; }
-    .header-meta { text-align: right; }
-    .header-meta .badge {
+    .hdr-brand h1 { font-size: 1.25rem; font-weight: 700; }
+    .hdr-brand p { font-size: .76rem; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .hdr-right { text-align: right; }
+    .badge {
       display: inline-block;
-      background: rgba(0,194,168,.2);
-      border: 1px solid var(--nub-accent);
-      color: var(--nub-accent);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .5px;
-      text-transform: uppercase;
+      background: rgba(0,194,168,.18); border: 1px solid var(--nub-accent);
+      color: var(--nub-accent); padding: 3px 12px; border-radius: 99px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
     }
-    .header-meta p { font-size: .78rem; color: rgba(255,255,255,.5); margin-top: 6px; }
+    .hdr-right p { font-size: .74rem; color: rgba(255,255,255,.45); margin-top: 5px; }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--nub-primary);
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-    }
+    /* ══ NAV ══ */
+    nav { background: rgba(10,28,60,.85); border-top: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(4px); }
+    .nav-inner { max-width: 1440px; margin: 0 auto; padding: 0 32px; display: flex; overflow-x: auto; gap: 2px; }
     nav a {
-      color: rgba(255,255,255,.65);
-      text-decoration: none;
-      font-size: .82rem;
-      font-weight: 500;
-      padding: 11px 16px;
-      white-space: nowrap;
-      border-bottom: 3px solid transparent;
-      transition: all .2s;
+      color: rgba(255,255,255,.58); text-decoration: none;
+      font-size: .78rem; font-weight: 500; white-space: nowrap;
+      padding: 10px 15px; border-bottom: 2px solid transparent; transition: all .18s;
     }
-    nav a:hover, nav a.active {
-      color: var(--nub-accent);
-      border-bottom-color: var(--nub-accent);
-    }
+    nav a:hover { color: var(--nub-accent); border-bottom-color: var(--nub-accent); }
 
-    /* ── MAIN ── */
-    main {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 36px 32px 80px;
-    }
+    /* ══ MAIN ══ */
+    main { max-width: 1440px; margin: 0 auto; padding: 36px 32px 100px; }
 
-    /* ── SECTION ── */
-    .section { margin-bottom: 64px; }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--nub-border);
-    }
-    .section-num {
-      width: 38px; height: 38px;
-      background: var(--nub-accent);
-      border-radius: 50%;
+    /* ══ SECTION ══ */
+    .section { margin-bottom: 72px; scroll-margin-top: 100px; }
+    .sec-hdr { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--nub-border); }
+    .sec-num {
+      min-width: 36px; height: 36px; border-radius: 50%;
+      background: var(--nub-accent); color: var(--nub-primary);
       display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; font-weight: 800; color: var(--nub-primary);
-      flex-shrink: 0;
+      font-size: .85rem; font-weight: 800; flex-shrink: 0; margin-top: 2px;
     }
-    .section-header h2 { font-size: 1.45rem; font-weight: 700; color: var(--nub-primary); }
-    .section-header p { font-size: .88rem; color: var(--nub-muted); margin-top: 2px; }
+    .sec-hdr h2 { font-size: 1.4rem; font-weight: 700; color: var(--nub-primary); }
+    .sec-hdr p { font-size: .83rem; color: var(--nub-muted); margin-top: 3px; }
 
-    /* ── STAT CARDS ── */
-    .stat-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+    /* ══ KPI STRIP ══ */
+    .kpi-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; margin-bottom: 32px; }
+    .kpi {
+      background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 14px;
+      padding: 18px 16px; text-align: center;
     }
-    .stat-card {
-      background: var(--nub-card);
-      border: 1px solid var(--nub-border);
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-    }
-    .stat-card .num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--nub-primary);
-      line-height: 1;
-    }
-    .stat-card .label {
-      font-size: .78rem;
-      color: var(--nub-muted);
-      margin-top: 6px;
-    }
-    .stat-card .accent { color: var(--nub-accent); }
+    .kpi .num { font-size: 2rem; font-weight: 800; color: var(--nub-primary); line-height: 1; }
+    .kpi .num.accent { color: var(--nub-accent); }
+    .kpi .lbl { font-size: .72rem; color: var(--nub-muted); margin-top: 6px; }
 
-    /* ── COMPETITOR CARDS ── */
-    .competitor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
-    }
+    /* ══ COMPETITOR GRID ══ */
+    .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px,1fr)); gap: 20px; }
     .comp-card {
-      background: var(--nub-card);
-      border: 1px solid var(--nub-border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
+      background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 16px;
+      overflow: hidden; transition: transform .2s, box-shadow .2s;
     }
-    .comp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.1); }
-    .comp-card-header {
-      padding: 18px 20px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .comp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+    .comp-hdr { padding: 16px 20px; color: #fff; display: flex; align-items: center; gap: 12px; }
+    .comp-av {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; flex-shrink: 0;
     }
-    .comp-avatar {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.22);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; font-weight: 900;
-      flex-shrink: 0;
-    }
-    .comp-card-header h3 { font-size: 1.05rem; font-weight: 700; }
-    .comp-card-header .sub { font-size: .76rem; opacity: .75; margin-top: 1px; }
-    .comp-card-body { padding: 18px 20px; }
-    .comp-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-    .tag {
-      font-size: .7rem; font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 999px;
-      letter-spacing: .3px;
-    }
-    .tag-cloud  { background: #EFF6FF; color: #1D4ED8; }
-    .tag-ai     { background: #F5F3FF; color: #6D28D9; }
-    .tag-legacy { background: #FFF7ED; color: #C2410C; }
-    .tag-saas   { background: #ECFDF5; color: #065F46; }
-    .tag-rpa    { background: #FDF2F8; color: #9D174D; }
-    .tag-api    { background: #F0FDF4; color: #166534; }
-    .tag-erp    { background: #FEF3C7; color: #92400E; }
+    .comp-hdr h3 { font-size: 1rem; font-weight: 700; }
+    .comp-hdr .sub { font-size: .73rem; opacity: .7; margin-top: 1px; }
+    .comp-body { padding: 16px 20px; }
 
-    .comp-info-row { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start; }
-    .comp-info-label { font-size: .72rem; font-weight: 700; color: var(--nub-muted); width: 90px; flex-shrink: 0; text-transform: uppercase; letter-spacing: .4px; padding-top: 1px; }
-    .comp-info-val { font-size: .82rem; color: var(--nub-text); }
+    /* tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+    .tag { font-size: .67rem; font-weight: 700; padding: 3px 9px; border-radius: 99px; letter-spacing: .3px; }
+    .t-cloud  { background: #EFF6FF; color: #1D4ED8; }
+    .t-ai     { background: #F5F3FF; color: #6D28D9; }
+    .t-legacy { background: #FFF7ED; color: #C2410C; }
+    .t-saas   { background: #ECFDF5; color: #065F46; }
+    .t-rpa    { background: #FDF2F8; color: #9D174D; }
+    .t-api    { background: #F0FDF4; color: #166534; }
+    .t-erp    { background: #FEF3C7; color: #92400E; }
+    .t-new    { background: #FEF2F2; color: #991B1B; }
+
+    /* info rows */
+    .irow { display: flex; gap: 8px; margin-bottom: 9px; align-items: flex-start; }
+    .ilbl {
+      font-size: .68rem; font-weight: 700; color: var(--nub-muted);
+      width: 88px; flex-shrink: 0; text-transform: uppercase; letter-spacing: .4px; padding-top: 1px;
+    }
+    .ival { font-size: .79rem; color: var(--nub-text); }
     .pill {
-      display: inline-block;
-      background: #F1F5F9;
-      border-radius: 6px;
-      padding: 1px 7px;
-      font-size: .73rem;
-      font-weight: 600;
-      color: var(--nub-primary);
+      display: inline-block; background: #F1F5F9; border-radius: 6px;
+      padding: 1px 7px; font-size: .7rem; font-weight: 600; color: var(--nub-primary);
       margin: 1px 2px 1px 0;
     }
-    .threat-bar { margin-top: 14px; }
-    .threat-label { font-size: .72rem; font-weight: 700; color: var(--nub-muted); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
-    .threat-track {
-      height: 6px;
-      background: #E2E8F0;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .threat-fill { height: 100%; border-radius: 999px; }
-    .threat-h   { background: var(--nub-danger); }
-    .threat-m   { background: var(--nub-warning); }
-    .threat-l   { background: var(--nub-success); }
-    .threat-num { font-size: .78rem; font-weight: 700; margin-top: 4px; }
+    .pill.hot { background: #FEF2F2; color: #991B1B; }
 
-    /* ── TABLE ── */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: 14px;
-      border: 1px solid var(--nub-border);
-      box-shadow: 0 2px 8px rgba(0,0,0,.04);
-    }
-    table { width: 100%; border-collapse: collapse; }
+    /* threat */
+    .threat { margin-top: 12px; }
+    .threat-lbl { font-size: .68rem; font-weight: 700; color: var(--nub-muted); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .threat-track { height: 5px; background: #E2E8F0; border-radius: 99px; overflow: hidden; }
+    .tf { height: 100%; border-radius: 99px; }
+    .tf-h { background: var(--nub-danger); }
+    .tf-m { background: var(--nub-warning); }
+    .tf-l { background: var(--nub-success); }
+
+    /* ══ TABLE ══ */
+    .tbl-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--nub-border); box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+    table { width: 100%; border-collapse: collapse; font-size: .79rem; }
     thead tr { background: var(--nub-primary); color: #fff; }
-    thead th {
-      padding: 14px 16px;
-      text-align: left;
-      font-size: .78rem;
-      font-weight: 600;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    thead th:first-child { border-radius: 0; }
-    tbody tr { border-bottom: 1px solid var(--nub-border); transition: background .15s; }
+    thead th { padding: 12px 14px; text-align: left; font-size: .7rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--nub-border); transition: background .12s; }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: #F8FAFC; }
-    tbody td { padding: 12px 16px; font-size: .82rem; vertical-align: middle; }
-    tbody td:first-child { font-weight: 700; color: var(--nub-primary); }
-    .check { color: var(--nub-success); font-size: 1rem; }
-    .cross { color: var(--nub-danger); font-size: 1rem; }
-    .partial { color: var(--nub-warning); font-size: 1rem; }
+    tbody td { padding: 11px 14px; vertical-align: middle; }
+    tbody td:first-child { font-weight: 700; color: var(--nub-primary); white-space: nowrap; }
+    .ck { color: var(--nub-success); }
+    .cx { color: var(--nub-danger); }
+    .cp { color: var(--nub-warning); }
+    .nub-row { background: linear-gradient(90deg,rgba(0,194,168,.07),rgba(0,114,255,.04)) !important; }
+    .nub-row td:first-child { color: var(--nub-accent); }
 
-    /* ── PERSONA CARDS ── */
-    .persona-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 18px;
+    /* ══ ATTACK MAP ══ */
+    .attack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px,1fr)); gap: 18px; }
+    .attack-card { background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 14px; overflow: hidden; }
+    .attack-hdr { padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+    .attack-hdr .icon { font-size: 1.5rem; }
+    .attack-hdr h4 { font-size: .92rem; font-weight: 700; color: #fff; }
+    .attack-hdr .sub { font-size: .72rem; color: rgba(255,255,255,.7); margin-top: 1px; }
+    .attack-body { padding: 14px 18px; }
+    .attack-body p { font-size: .8rem; color: var(--nub-muted); margin-bottom: 10px; }
+    .attack-body ul { list-style: none; }
+    .attack-body ul li { font-size: .78rem; padding: 4px 0; display: flex; gap: 8px; border-bottom: 1px solid var(--nub-border); }
+    .attack-body ul li:last-child { border-bottom: none; }
+    .attack-body ul li::before { content: '→'; color: var(--nub-accent); font-weight: 700; flex-shrink: 0; }
+    .pitch-tag {
+      display: inline-block; font-size: .68rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 6px; margin-top: 8px;
+      text-transform: uppercase; letter-spacing: .4px;
     }
-    .persona-card {
-      background: var(--nub-card);
-      border: 1px solid var(--nub-border);
-      border-radius: 14px;
-      padding: 20px;
-    }
-    .persona-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .persona-icon { font-size: 2rem; }
-    .persona-title { font-weight: 700; font-size: .95rem; color: var(--nub-primary); }
-    .persona-sub { font-size: .76rem; color: var(--nub-muted); }
-    .persona-uses { font-size: .8rem; color: var(--nub-text); margin-bottom: 10px; }
-    .persona-uses strong { color: var(--nub-primary); }
-    .persona-pain { background: #FEF2F2; border-left: 3px solid var(--nub-danger); border-radius: 0 6px 6px 0; padding: 8px 12px; font-size: .78rem; color: #7F1D1D; }
+    .pt-hot  { background: #FEF2F2; color: #991B1B; }
+    .pt-med  { background: #FEF3C7; color: #92400E; }
+    .pt-info { background: #EFF6FF; color: #1E40AF; }
 
-    /* ── CLIENT SECTION ── */
-    .client-block {
-      background: var(--nub-card);
-      border: 1px solid var(--nub-border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin-bottom: 16px;
+    /* ══ CLIENT BLOCKS ══ */
+    .cb-wrap { display: flex; flex-direction: column; gap: 14px; }
+    .cb {
+      background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 12px;
+      padding: 16px 20px;
     }
-    .client-block-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
+    .cb-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .cb-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .cb-top h4 { font-size: .88rem; font-weight: 700; color: var(--nub-primary); }
+    .cb-top .seg { font-size: .72rem; color: var(--nub-muted); margin-left: auto; }
+    .client-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .cpill {
+      background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 7px;
+      padding: 4px 11px; font-size: .73rem; font-weight: 600; color: var(--nub-primary);
     }
-    .client-dot {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .client-block-header h4 { font-size: .95rem; font-weight: 700; color: var(--nub-primary); }
-    .client-block-header .seg { font-size: .76rem; color: var(--nub-muted); }
-    .client-logos { display: flex; flex-wrap: wrap; gap: 8px; }
-    .client-pill {
-      background: #F1F5F9;
-      border: 1px solid #CBD5E1;
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--nub-primary);
-    }
+    .cpill.star { background: #FFF7ED; border-color: #FCD34D; color: #92400E; }
 
-    /* ── OPPORTUNITY CARDS ── */
-    .opp-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 18px;
+    /* ══ TESTIMONY ══ */
+    .testy-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 16px; }
+    .testy {
+      background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 12px; padding: 18px 20px;
+      border-left: 4px solid var(--nub-accent);
     }
-    .opp-card {
-      background: var(--nub-card);
-      border: 1px solid var(--nub-border);
-      border-radius: 14px;
-      padding: 22px;
-      border-left: 5px solid var(--nub-accent);
-    }
-    .opp-card.high { border-left-color: var(--nub-danger); }
-    .opp-card.med  { border-left-color: var(--nub-warning); }
-    .opp-card.info { border-left-color: var(--nub-accent2); }
-    .opp-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .opp-card h4 { font-size: .98rem; font-weight: 700; color: var(--nub-primary); margin-bottom: 8px; }
-    .opp-card p { font-size: .82rem; color: var(--nub-muted); margin-bottom: 12px; }
-    .opp-card .action {
-      font-size: .78rem;
-      font-weight: 700;
-      color: var(--nub-accent);
-      text-transform: uppercase;
-      letter-spacing: .4px;
-    }
-    .opp-card.high .action { color: var(--nub-danger); }
-    .opp-card.med  .action { color: var(--nub-warning); }
-    .opp-card.info .action { color: var(--nub-accent2); }
+    .testy blockquote { font-size: .8rem; color: var(--nub-muted); font-style: italic; margin-bottom: 10px; line-height: 1.6; }
+    .testy .attr { font-size: .72rem; font-weight: 700; color: var(--nub-primary); }
+    .testy .attr span { color: var(--nub-muted); font-weight: 400; }
 
-    /* ── SWOT ── */
-    .swot-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .swot-cell {
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .swot-cell h4 { font-size: .88rem; font-weight: 700; margin-bottom: 12px; letter-spacing: .3px; text-transform: uppercase; }
+    /* ══ PERSONA ══ */
+    .persona-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 16px; }
+    .persona { background: var(--nub-card); border: 1px solid var(--nub-border); border-radius: 12px; padding: 18px 20px; }
+    .persona-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .persona-icon { font-size: 1.8rem; }
+    .persona-top h4 { font-size: .88rem; font-weight: 700; color: var(--nub-primary); }
+    .persona-top .sub { font-size: .7rem; color: var(--nub-muted); }
+    .persona p { font-size: .78rem; color: var(--nub-muted); margin-bottom: 8px; }
+    .persona-pain { background: #FEF2F2; border-left: 3px solid var(--nub-danger); border-radius: 0 6px 6px 0; padding: 7px 12px; font-size: .75rem; color: #7F1D1D; }
+
+    /* ══ GAP CARDS ══ */
+    .gap-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 16px; }
+    .gap-card { background: var(--nub-card); border-radius: 13px; padding: 20px; border-left: 5px solid; }
+    .gap-card.p1 { border-color: var(--nub-danger); }
+    .gap-card.p2 { border-color: var(--nub-warning); }
+    .gap-card.p3 { border-color: var(--nub-blue); }
+    .gap-card .gi { font-size: 1.6rem; margin-bottom: 8px; }
+    .gap-card h4 { font-size: .9rem; font-weight: 700; color: var(--nub-primary); margin-bottom: 6px; }
+    .gap-card p { font-size: .78rem; color: var(--nub-muted); line-height: 1.6; }
+    .gap-card .action { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; margin-top: 10px; }
+    .p1 .action { color: var(--nub-danger); }
+    .p2 .action { color: var(--nub-warning); }
+    .p3 .action { color: var(--nub-blue); }
+
+    /* ══ SWOT ══ */
+    .swot { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .swot-cell { border-radius: 12px; padding: 18px 20px; }
+    .swot-cell h4 { font-size: .8rem; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; margin-bottom: 10px; }
     .swot-cell ul { list-style: none; }
-    .swot-cell ul li { font-size: .82rem; padding: 4px 0; display: flex; gap: 8px; }
-    .swot-cell ul li::before { flex-shrink: 0; }
+    .swot-cell li { font-size: .78rem; padding: 3px 0; display: flex; gap: 7px; }
     .swot-S { background: #ECFDF5; color: #065F46; }
-    .swot-S h4 { color: #065F46; }
-    .swot-S li::before { content: '✓'; }
     .swot-W { background: #FEF2F2; color: #7F1D1D; }
-    .swot-W h4 { color: #991B1B; }
-    .swot-W li::before { content: '✗'; }
     .swot-O { background: #EFF6FF; color: #1E3A8A; }
-    .swot-O h4 { color: #1E40AF; }
-    .swot-O li::before { content: '→'; }
-    .swot-T { background: #FFFBEB; color: #92400E; }
-    .swot-T h4 { color: #B45309; }
-    .swot-T li::before { content: '⚠'; }
+    .swot-T { background: #FFFBEB; color: #78350F; }
+    .swot-S li::before { content: '✓'; color: #059669; }
+    .swot-W li::before { content: '✗'; color: #DC2626; }
+    .swot-O li::before { content: '→'; color: #2563EB; }
+    .swot-T li::before { content: '⚠'; color: #D97706; }
 
-    /* ── CALLOUT ── */
+    /* ══ CALLOUT ══ */
     .callout {
-      background: linear-gradient(135deg, var(--nub-primary), #0F3460);
-      color: #fff;
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-top: 32px;
+      background: linear-gradient(135deg, var(--nub-primary), #0A3060);
+      border-radius: 16px; padding: 28px 32px; margin-top: 28px; color: #fff;
     }
-    .callout h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--nub-accent); }
-    .callout ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .callout li { font-size: .84rem; display: flex; gap: 10px; align-items: flex-start; }
-    .callout li::before { content: '→'; color: var(--nub-accent); font-weight: 700; flex-shrink: 0; }
+    .callout h3 { font-size: 1.05rem; font-weight: 700; color: var(--nub-accent); margin-bottom: 16px; }
+    .callout ol { list-style: decimal; padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .callout li { font-size: .8rem; line-height: 1.5; }
+    .callout strong { color: var(--nub-accent); }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--nub-primary);
-      color: rgba(255,255,255,.5);
-      text-align: center;
-      padding: 24px;
-      font-size: .78rem;
-    }
+    /* ══ FOOTER ══ */
+    footer { background: var(--nub-primary); color: rgba(255,255,255,.4); text-align: center; padding: 22px; font-size: .74rem; }
     footer strong { color: var(--nub-accent); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      main { padding: 20px 16px 60px; }
-      .swot-grid { grid-template-columns: 1fr; }
-      .callout ul { grid-template-columns: 1fr; }
-      .comp-card-body .comp-info-label { width: 80px; }
+    /* ══ UTILITIES ══ */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .mt16 { margin-top: 16px; }
+    .note { font-size: .72rem; color: var(--nub-muted); margin-top: 8px; }
+
+    @media (max-width: 780px) {
+      main { padding: 20px 14px 60px; }
+      .swot { grid-template-columns: 1fr; }
+      .callout ol { grid-template-columns: 1fr; }
+      .comp-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════ HEADER ═══════════════ -->
+<!-- ═══════════ HEADER ═══════════ -->
 <header>
-  <div class="header-inner">
-    <div class="logo-wrap">
-      <div class="logo-icon">N</div>
-      <div class="logo-text">
-        <h1>Nubceo · Inteligencia Competitiva</h1>
-        <p>Análisis de Mercado — Auditoría de Pagos y Conciliación Financiera</p>
+  <div class="hdr-top">
+    <div class="hdr-brand">
+      <div class="hdr-logo">N</div>
+      <div>
+        <h1>Nubceo · Mapa de Competencia</h1>
+        <p>Inteligencia de Mercado — Auditoría de Pagos · Conciliación Financiera · Control de Ingresos</p>
       </div>
     </div>
-    <div class="header-meta">
+    <div class="hdr-right">
       <span class="badge">Confidencial Interno</span>
-      <p>Actualizado: Abril 2026 &nbsp;·&nbsp; 7 competidores analizados</p>
+      <p>Research exhaustivo · Abril 2026 · 10 competidores mapeados</p>
     </div>
   </div>
+  <nav>
+    <div class="nav-inner">
+      <a href="#resumen">Resumen</a>
+      <a href="#mapa">Mapa Completo</a>
+      <a href="#comparativa">Tabla Comparativa</a>
+      <a href="#clientes">Clientes Reales</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#ataque">A Quién Atacar</a>
+      <a href="#personas">Buyer Personas</a>
+      <a href="#brechas">Brechas</a>
+      <a href="#conclusiones">Conclusiones</a>
+    </div>
+  </nav>
 </header>
 
-<!-- ═══════════════ NAV ═══════════════ -->
-<nav>
-  <div class="nav-inner">
-    <a href="#resumen" class="active">Resumen Ejecutivo</a>
-    <a href="#ecosistema">Ecosistema</a>
-    <a href="#comparativa">Tabla Comparativa</a>
-    <a href="#clientes">Clientes y Segmentos</a>
-    <a href="#personas">Buyer Personas</a>
-    <a href="#oportunidades">Brechas y Oportunidades</a>
-    <a href="#conclusiones">Conclusiones</a>
-  </div>
-</nav>
-
-<!-- ═══════════════ MAIN ═══════════════ -->
+<!-- ═══════════ MAIN ═══════════ -->
 <main>
 
-  <!-- ─── RESUMEN EJECUTIVO ─── -->
-  <section class="section" id="resumen">
-    <div class="section-header">
-      <div class="section-num">0</div>
-      <div>
-        <h2>Resumen Ejecutivo</h2>
-        <p>Panorama del mercado de conciliación de pagos y auditoría financiera en Latinoamérica</p>
+<!-- ──────── RESUMEN ──────── -->
+<section class="section" id="resumen">
+  <div class="sec-hdr">
+    <div class="sec-num">0</div>
+    <div>
+      <h2>Resumen Ejecutivo</h2>
+      <p>Panorama completo del mercado de conciliación de pagos y auditoría financiera en Latinoamérica — investigación directa de fuentes primarias</p>
+    </div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="num accent">10</div><div class="lbl">Competidores directos mapeados</div></div>
+    <div class="kpi"><div class="num">3</div><div class="lbl">Nuevos rivales descubiertos (DaMap, DATAPOS, Flexxus)</div></div>
+    <div class="kpi"><div class="num accent">5.000</div><div class="lbl">Clientes de DATAPOS (rival más masivo)</div></div>
+    <div class="kpi"><div class="num">200+</div><div class="lbl">Clientes enterprise de Conciliac</div></div>
+    <div class="kpi"><div class="num accent">30+</div><div class="lbl">Años del líder histórico (AUDITAR)</div></div>
+    <div class="kpi"><div class="num">4</div><div class="lbl">Competidores con IA / ML activo</div></div>
+    <div class="kpi"><div class="num accent">3</div><div class="lbl">Rivales con UX legacy que facilitan captación</div></div>
+    <div class="kpi"><div class="num">17</div><div class="lbl">Países cubiertos por SYC</div></div>
+  </div>
+
+  <div style="background:var(--nub-card);border:1px solid var(--nub-border);border-radius:14px;padding:22px 26px;">
+    <p style="font-size:.88rem;line-height:1.85;color:var(--nub-muted);">
+      El mercado está <strong style="color:var(--nub-primary);">estructuralmente fracturado en tres capas</strong>:
+      (1) jugadores <em>legacy enterprise</em> con bases instaladas enormes pero tecnología obsoleta (AUDITAR, PC Bank, SYC),
+      (2) actores <em>cloud modernos con IA</em> que atacan el segmento corporativo alto (Conciliac, DaMap),
+      y (3) herramientas de <em>bajo costo para comercios</em> (DATAPOS, ConciliaBot, Cucurú).
+      El territorio <strong style="color:var(--nub-accent);">completamente sin cobertura real es la empresa mediana</strong>
+      (30–500 empleados, multi-punto de venta, que necesita una plataforma integrada de ingresos con UX moderna y precio razonable).
+      Eso es exactamente el espacio de Nubceo.
+    </p>
+  </div>
+</section>
+
+<!-- ──────── MAPA COMPLETO ──────── -->
+<section class="section" id="mapa">
+  <div class="sec-hdr">
+    <div class="sec-num">1</div>
+    <div>
+      <h2>Mapa Completo de Competidores</h2>
+      <p>10 jugadores analizados con datos reales extraídos de sus sitios, prensa y testimonios públicos</p>
+    </div>
+  </div>
+
+  <div class="comp-grid">
+
+    <!-- ── AUDITAR ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c1);">
+        <div class="comp-av">AU</div>
+        <div><h3>AUDITARpays</h3><div class="sub">Líder histórico · 30+ años · 30 países</div></div>
+      </div>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-legacy">Windows / On-premise</span>
+          <span class="tag t-erp">SAP nativo</span>
+          <span class="tag t-cloud">Cloud parcial</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">auditar-nt.com</span></div>
+        <div class="irow"><span class="ilbl">Productos</span><span class="ival">AUDITARpays · AUDITARbanks · AUDITARfiles</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación de +500 medios de pago electrónicos, transacción por transacción. Robot que descarga liquidaciones automáticamente de 50+ procesadoras.</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill hot">YPF</span><span class="pill hot">Carrefour</span><span class="pill hot">Cencosud</span>
+            <span class="pill">Aerolíneas Arg.</span><span class="pill">Farmacity</span><span class="pill">McDonald's</span>
+            <span class="pill">Frávega</span><span class="pill">La Anónima</span><span class="pill">Personal</span><span class="pill">Soriana MX</span>
+            <span class="pill">+100 líderes</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Diferencial</span><span class="ival">"Se recuperan millones de pesos por ordenar esta información" — integración SAP certificada, única en el mercado.</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">UI legacy de Windows. Sin dashboard ejecutivo en tiempo real. Sin plan para PyMEs.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-danger);font-weight:700;">95% — Crítica</span></div>
+          <div class="threat-track"><div class="tf tf-h" style="width:95%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="num accent">7</div>
-        <div class="label">Competidores directos analizados</div>
+    <!-- ── CONCILIAC ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c7);">
+        <div class="comp-av">CI</div>
+        <div><h3>Conciliac IDM</h3><div class="sub">IA + RPA · 200+ clientes enterprise · Global</div></div>
       </div>
-      <div class="stat-card">
-        <div class="num">30+</div>
-        <div class="label">Años del jugador más antiguo (AUDITAR)</div>
-      </div>
-      <div class="stat-card">
-        <div class="num accent">3</div>
-        <div class="label">Competidores con IA / ML integrado</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">17</div>
-        <div class="label">Países cubiertos por SYC (mayor alcance)</div>
-      </div>
-      <div class="stat-card">
-        <div class="num accent">800+</div>
-        <div class="label">Estudios contables usan ConciliaBot</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">90%</div>
-        <div class="label">Reducción de trabajo manual prometida por PC Bank</div>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-ai">IA / Machine Learning</span>
+          <span class="tag t-rpa">RPA</span>
+          <span class="tag t-cloud">Cloud</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">conciliac.com</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Plataforma unificada: bancaria, tarjetas, stock, proveedores, intercompany. IA sugiere matches sin programación. Cientos de miles de registros en minutos.</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill hot">Walmart</span><span class="pill hot">Ford</span><span class="pill hot">American Express</span>
+            <span class="pill hot">Santander</span><span class="pill">Despegar</span><span class="pill">Falabella</span>
+            <span class="pill">McDonald's</span><span class="pill">Cabify</span><span class="pill">Ualá</span>
+            <span class="pill">Embraer</span><span class="pill">Boca Jr.</span><span class="pill">Sheraton</span>
+            <span class="pill">Volvo</span><span class="pill">Amadeus</span><span class="pill">BIC</span>
+            <span class="pill">Assist Card</span><span class="pill">Casasco Lab.</span><span class="pill">Alto Palermo</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Partners</span><span class="ival">Deloitte · SAP · PwC · Tata · Seidor · Russell Bedford</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">Apunta a grandes corporaciones. Complejo para PyMEs. Sin módulo de flujo de fondos / Cash.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-danger);font-weight:700;">88% — Muy alta</span></div>
+          <div class="threat-track"><div class="tf tf-h" style="width:88%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div style="background:var(--nub-card);border:1px solid var(--nub-border);border-radius:14px;padding:24px;">
-      <p style="font-size:.9rem;line-height:1.8;color:var(--nub-muted);">
-        El mercado de <strong style="color:var(--nub-primary);">auditoría y conciliación de medios de pago</strong> en Argentina y Latinoamérica está fragmentado entre jugadores legacy con
-        bases instaladas sólidas (AUDITAR, SYC, PC Bank) y nuevos actores cloud con IA (Conciliac, ConciliaBot, Cucurú).
-        Ningún competidor ofrece hoy una plataforma <em>unificada</em> que cubra simultáneamente conciliación bancaria,
-        medios de pago electrónicos, control de ingresos y analítica de gestión con UX moderna.
-        <strong style="color:var(--nub-accent);">Esa brecha es el territorio natural de Nubceo.</strong>
-      </p>
-    </div>
-  </section>
-
-  <!-- ─── ECOSISTEMA ─── -->
-  <section class="section" id="ecosistema">
-    <div class="section-header">
-      <div class="section-num">1</div>
-      <div>
-        <h2>Fase 1 — Ecosistema de Competencia Directa</h2>
-        <p>Los 7 jugadores del mercado de auditoría de pagos y conciliación financiera</p>
+    <!-- ── DATAPOS ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c9);">
+        <div class="comp-av">DP</div>
+        <div><h3>DATAPOS</h3><div class="sub">⚠ Nuevo · 5.000 clientes · 60M transac./mes</div></div>
       </div>
-    </div>
-
-    <div class="competitor-grid">
-
-      <!-- AUDITAR -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-auditar);">
-          <div class="comp-avatar">A</div>
-          <div>
-            <h3>AUDITARpays</h3>
-            <div class="sub">AUDITAR · Fundada 1990s · Líder histórico</div>
-          </div>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-saas">SaaS</span>
+          <span class="tag t-cloud">Cloud</span>
+          <span class="tag t-new">Descubierto nuevo</span>
         </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-legacy">On-Premise / Windows</span>
-            <span class="tag tag-erp">SAP Add-on</span>
-            <span class="tag tag-cloud">Cloud parcial</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">auditar-nt.com</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Conciliación de medios de pago electrónicos (tarjetas, QR, wallets, DEBIN, PEI, transferencias)</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Presencia</span>
-            <span class="comp-info-val">Argentina · +30 países</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes top</span>
-            <span class="comp-info-val">
-              <span class="pill">YPF</span><span class="pill">Carrefour</span><span class="pill">Aerolíneas</span>
-              <span class="pill">Cencosud</span><span class="pill">Farmacity</span><span class="pill">McDonald's</span>
-              <span class="pill">Frávega</span><span class="pill">Personal</span>
-            </span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-h" style="width:92%"></div></div>
-            <div class="threat-num" style="color:var(--nub-danger);">92% — Muy alto</div>
-          </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">datapos.com.ar</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación de ventas de todos los medios de pago electrónicos: tarjetas, QR, wallets. Calendario de acreditaciones, alertas de contracargos, reportes de impuestos y retenciones.</span></div>
+        <div class="irow"><span class="ilbl">Escala</span><span class="ival"><strong>5.000 clientes activos</strong> · 60M transacciones/mes · 70+ grandes marcas</span></div>
+        <div class="irow"><span class="ilbl">Precio</span><span class="ival">Trial gratis 15 días. Plan comercio y plan empresa (precio por consulta)</span></div>
+        <div class="irow"><span class="ilbl">Segmento</span><span class="ival">Comercios de todos los tamaños con foco en retail y gastronomía</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">Solo conciliación de ventas. Sin módulo bancario, sin analíticos avanzados, sin contabilidad.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-danger);font-weight:700;">82% — Muy alta</span></div>
+          <div class="threat-track"><div class="tf tf-h" style="width:82%"></div></div>
         </div>
-      </div>
-
-      <!-- ATANA -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-atana);">
-          <div class="comp-avatar">AT</div>
-          <div>
-            <h3>Atana SoftCard</h3>
-            <div class="sub">Atana · Conciliación de tarjetas y medios de pago</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-saas">SaaS / Cloud</span>
-            <span class="tag tag-erp">Integración ERP</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">atana.com.ar</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Conciliación automática de tarjetas de crédito/débito + MercadoPago + Payway. Gestión de reclamos y contracargos.</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">KPI clave</span>
-            <span class="comp-info-val">85% de conciliaciones automáticas en clientes activos</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes top</span>
-            <span class="comp-info-val">
-              <span class="pill">Hertz Argentina</span><span class="pill">Hotel Madero</span><span class="pill">Grupo Rosales</span>
-            </span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Diferencial</span>
-            <span class="comp-info-val">Outsourcing completo de gestión de reclamos con tarjetas</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-m" style="width:68%"></div></div>
-            <div class="threat-num" style="color:var(--nub-warning);">68% — Moderado-alto</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONCILIABOT -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-concbot);">
-          <div class="comp-avatar">CB</div>
-          <div>
-            <h3>ConciliaBot</h3>
-            <div class="sub">Contatech · IA para estudios contables</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-ai">IA / LLM</span>
-            <span class="tag tag-cloud">Cloud nativo</span>
-            <span class="tag tag-saas">Sin instalación</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">contatech.org/conciliabot</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Asistente IA para contadores: conciliación bancaria, retenciones, ARCA, asientos automáticos, WhatsApp bots</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Precio</span>
-            <span class="comp-info-val">$40.000 ARS/mes · $52.000 ARS/mes (Plus)</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes</span>
-            <span class="comp-info-val">+800 estudios contables en Argentina. Segmento: <strong>contadores independientes y PyMEs</strong></span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Satisfacción</span>
-            <span class="comp-info-val">4.8 ⭐ — Ahorro de +7 días/mes</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-m" style="width:55%"></div></div>
-            <div class="threat-num" style="color:var(--nub-warning);">55% — Moderado</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CUCURÚ -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-cucuru);">
-          <div class="comp-avatar">CU</div>
-          <div>
-            <h3>Cucurú</h3>
-            <div class="sub">Infraestructura B2B de cobranza · Fintech</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-api">API-first</span>
-            <span class="tag tag-cloud">Cloud nativo</span>
-            <span class="tag tag-saas">SaaS</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">cucuru.com</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Cobranza B2B via transferencias inteligentes: conciliación automática por cliente/POS, acreditación en el día, emisión de recibos</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Presencia</span>
-            <span class="comp-info-val">Argentina · México · Brasil</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Diferencial</span>
-            <span class="comp-info-val">Hasta 10× más barato que tarjetas/QR. Activación en 24 hs. Sin inversión inicial.</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Segmento</span>
-            <span class="comp-info-val">Distribución, logística, retail B2B, e-commerce</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-l" style="width:42%"></div></div>
-            <div class="threat-num" style="color:var(--nub-success);">42% — Moderado-bajo</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PC BANK -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-pcbank);">
-          <div class="comp-avatar">PB</div>
-          <div>
-            <h3>PC Bank</h3>
-            <div class="sub">PC Net · Conciliación bancaria automática</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-legacy">Software instalable</span>
-            <span class="tag tag-erp">Multi-ERP</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">pcnet.com.ar</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Conciliación bancaria automática, cruce inteligente de movimientos, explosionador de asientos, alertas de irregularidades</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes top</span>
-            <span class="comp-info-val">
-              <span class="pill">Arcos Dorados</span><span class="pill">Roemmers</span><span class="pill">ACCOR</span>
-              <span class="pill">Claro Argentina</span><span class="pill">Petrocuyo</span><span class="pill">Columbia</span>
-            </span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">KPI clave</span>
-            <span class="comp-info-val">Reduce 90% del trabajo manual. Mínimo 1.000 ops/mes.</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-h" style="width:78%"></div></div>
-            <div class="threat-num" style="color:var(--nub-danger);">78% — Alto</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SYC -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-syc);">
-          <div class="comp-avatar">SY</div>
-          <div>
-            <h3>SYC Consulting</h3>
-            <div class="sub">SYC Concilia · Fundada 2001 · Regional</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-legacy">Software tradicional</span>
-            <span class="tag tag-erp">Multi-versión</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">sycconsulting.com</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Conciliación bancaria, cuentas corresponsales, ATM, tarjetas, cuentas pasivas. Versión Empresas y versión Bancos.</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes top</span>
-            <span class="comp-info-val">
-              <span class="pill">Banco Patagonia</span><span class="pill">Mapfre Argentina</span>
-              <span class="pill">La Caja</span><span class="pill">SURA Seguros</span><span class="pill">Banco General Panamá</span>
-            </span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Presencia</span>
-            <span class="comp-info-val">17 países de Latinoamérica</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Segmento</span>
-            <span class="comp-info-val">Bancos, aseguradoras, instituciones financieras</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-m" style="width:62%"></div></div>
-            <div class="threat-num" style="color:var(--nub-warning);">62% — Moderado-alto</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONCILIAC -->
-      <div class="comp-card">
-        <div class="comp-card-header" style="background:var(--c-concliac);">
-          <div class="comp-avatar">CI</div>
-          <div>
-            <h3>Conciliac IDM</h3>
-            <div class="sub">IA + RPA · Grandes corporaciones multinacionales</div>
-          </div>
-        </div>
-        <div class="comp-card-body">
-          <div class="comp-tag-row">
-            <span class="tag tag-ai">IA / Machine Learning</span>
-            <span class="tag tag-rpa">RPA</span>
-            <span class="tag tag-cloud">Cloud</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Web</span>
-            <span class="comp-info-val">conciliac.com</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Producto core</span>
-            <span class="comp-info-val">Plataforma unificada: conciliación bancaria, tarjetas, stock, proveedores, intercompany. IA sugiere matches, RPA automatiza procesos.</span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Clientes top</span>
-            <span class="comp-info-val">
-              <span class="pill">Walmart</span><span class="pill">Ford</span><span class="pill">American Express</span>
-              <span class="pill">Santander</span><span class="pill">Volvo</span><span class="pill">BIC</span>
-              <span class="pill">Assist Card</span><span class="pill">Casasco</span>
-            </span>
-          </div>
-          <div class="comp-info-row">
-            <span class="comp-info-label">Diferencial</span>
-            <span class="comp-info-val">Cientos de miles de registros en minutos. Sin conocimiento de programación.</span>
-          </div>
-          <div class="threat-bar">
-            <div class="threat-label">Nivel de amenaza competitiva</div>
-            <div class="threat-track"><div class="threat-fill threat-h" style="width:85%"></div></div>
-            <div class="threat-num" style="color:var(--nub-danger);">85% — Muy alto</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── TABLA COMPARATIVA ─── -->
-  <section class="section" id="comparativa">
-    <div class="section-header">
-      <div class="section-num">2</div>
-      <div>
-        <h2>Fase 2 — Análisis de Producto y Propuesta de Valor</h2>
-        <p>Tabla comparativa de funcionalidades y diferencial tecnológico</p>
       </div>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th style="min-width:140px;">Plataforma</th>
-            <th>Concil. Bancaria</th>
-            <th>Concil. Tarjetas/Wallets</th>
-            <th>Auditoría Ingresos</th>
-            <th>Integración ERP</th>
-            <th>IA / ML</th>
-            <th>API / Integraciones</th>
-            <th>UX Moderna</th>
-            <th>Cloud nativo</th>
-            <th>Precio público</th>
-            <th>Segmento primario</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>AUDITARpays</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span> 500+ medios</td>
-            <td><span class="partial">◑</span> Limitado</td>
-            <td><span class="check">✔</span> SAP / ERP</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="cross">✗</span> Legacy</td>
-            <td><span class="partial">◑</span> Híbrido</td>
-            <td><span class="cross">✗</span></td>
-            <td>Grandes empresas</td>
-          </tr>
-          <tr>
-            <td>Atana SoftCard</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="check">✔</span> 85% auto</td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="check">✔</span> Multi-ERP</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="cross">✗</span></td>
-            <td>Retail, hotelería</td>
-          </tr>
-          <tr>
-            <td>ConciliaBot</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="check">✔</span> IA generativa</td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="check">✔</span> Moderno</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span> $40K ARS</td>
-            <td>Contadores / PyMEs</td>
-          </tr>
-          <tr>
-            <td>Cucurú</td>
-            <td><span class="partial">◑</span> Solo transfers.</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="check">✔</span> API</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="check">✔</span> API-first</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="cross">✗</span></td>
-            <td>Distribución B2B</td>
-          </tr>
-          <tr>
-            <td>PC Bank</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="partial">◑</span> PC Card separado</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="check">✔</span> DATANET</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span> Legacy</td>
-            <td><span class="cross">✗</span> On-premise</td>
-            <td><span class="cross">✗</span></td>
-            <td>Retail, gastronomía</td>
-          </tr>
-          <tr>
-            <td>SYC Concilia</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span> Muy legacy</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td>Bancos, seguros</td>
-          </tr>
-          <tr>
-            <td>Conciliac IDM</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span> Multi-ERP</td>
-            <td><span class="check">✔</span> IA + RPA</td>
-            <td><span class="check">✔</span> API/FTP/SFTP</td>
-            <td><span class="partial">◑</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="cross">✗</span></td>
-            <td>Grandes corporaciones</td>
-          </tr>
-          <tr style="background:linear-gradient(90deg,rgba(0,194,168,.08),rgba(0,114,255,.05));font-weight:700;">
-            <td style="color:var(--nub-accent);">✦ Nubceo</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span> Nativo</td>
-            <td><span class="check">✔</span></td>
-            <td>—</td>
-            <td style="color:var(--nub-accent);">PyMEs + Corp.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:.75rem;color:var(--nub-muted);margin-top:10px;">✔ = Sí completo &nbsp;·&nbsp; ◑ = Parcial / módulo separado &nbsp;·&nbsp; ✗ = No disponible</p>
-  </section>
-
-  <!-- ─── CLIENTES ─── -->
-  <section class="section" id="clientes">
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <div>
-        <h2>Fase 3 — Análisis de Clientes y Penetración de Mercado</h2>
-        <p>Empresas identificadas públicamente como usuarias de cada plataforma competidora</p>
+    <!-- ── PC BANK ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c5);">
+        <div class="comp-av">PB</div>
+        <div><h3>PC Bank (PC Net)</h3><div class="sub">Conciliación bancaria · Retail y gastronomía</div></div>
       </div>
-    </div>
-
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-auditar);"></div>
-        <div>
-          <h4>AUDITARpays — Base instalada: Grandes empresas retail y servicios</h4>
-          <span class="seg">Segmento: Corporaciones con +500 transacciones diarias · Retail masivo · Energía · Telco</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-legacy">On-premise · Windows</span>
+          <span class="tag t-erp">Multi-ERP</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">pcnet.com.ar</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación bancaria automática. PC Card (tarjetas separado). PC Tax (retenciones). Explosionador de movimientos. Reduce 90% del trabajo manual.</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill hot">Arcos Dorados</span><span class="pill hot">Roemmers</span>
+            <span class="pill">ACCOR Hotels</span><span class="pill">Claro Argentina</span>
+            <span class="pill">Petrocuyo</span><span class="pill">Columbia</span>
+            <span class="pill">Grupo Disal</span><span class="pill">Cher</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">UI de los 2000s. Requiere instalación. Sin cloud. Sin IA. Módulos bancario y tarjetas son separados y no integrados.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">78% — Alta</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:78%"></div></div>
         </div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">YPF</span><span class="client-pill">Aerolíneas Argentinas</span>
-        <span class="client-pill">Cencosud</span><span class="client-pill">Farmacity</span>
-        <span class="client-pill">Carrefour Argentina</span><span class="client-pill">La Anónima</span>
-        <span class="client-pill">McDonald's Argentina</span><span class="client-pill">Frávega</span>
-        <span class="client-pill">Personal (Telecom)</span><span class="client-pill">Soriana (México)</span>
-        <span class="client-pill">+100 empresas líderes (declarado)</span>
+    </div>
+
+    <!-- ── ATANA ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c2);">
+        <div class="comp-av">AT</div>
+        <div><h3>Atana SoftCard</h3><div class="sub">20+ años · 85% conciliación automática · LATAM</div></div>
+      </div>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-saas">SaaS / Cloud</span>
+          <span class="tag t-erp">Multi-ERP</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">atana.com.ar</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación de tarjetas de crédito/débito + MercadoPago + Payway. Gestión de reclamos y contracargos. Exportación al ERP. Outsourcing del proceso completo.</span></div>
+        <div class="irow"><span class="ilbl">KPI clave</span><span class="ival">85% de conciliaciones automáticas promedio en clientes activos</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill">Hertz Argentina</span><span class="pill">Hotel Madero</span><span class="pill">Grupo Rosales</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">Solo conciliación de tarjetas, no bancaria. Sin analíticos. Clientes poco declarados públicamente.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">68% — Moderada-alta</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:68%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-atana);"></div>
-        <div>
-          <h4>Atana SoftCard — Base instalada: Hotelería, automotriz y retail mediano</h4>
-          <span class="seg">Segmento: Empresas medianas y grandes con alto volumen de ventas con tarjeta</span>
-        </div>
+    <!-- ── DAMAP ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c8);">
+        <div class="comp-av">DM</div>
+        <div><h3>DaMap</h3><div class="sub">⚠ Nuevo · IA Cloud · Azure · 100+ clientes LATAM</div></div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">Hertz Argentina</span><span class="client-pill">Hotel Madero (Buenos Aires)</span>
-        <span class="client-pill">Grupo Rosales</span><span class="client-pill">Clientes no declarados públicamente</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-ai">IA</span>
+          <span class="tag t-cloud">Cloud (Azure)</span>
+          <span class="tag t-saas">No-code</span>
+          <span class="tag t-new">Descubierto nuevo</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">damap.tech</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación financiera IA: bancos, tarjetas y pasarelas. Procesa 1.000 transacciones/seg. Caso Supermercados Liro: de 2-3 días de proceso a ciclo semanal automatizado.</span></div>
+        <div class="irow"><span class="ilbl">Performance</span><span class="ival">8 horas de trabajo manual → 8 minutos. +98% conciliaciones automatizadas. -95% errores.</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill">Supermercados Liro</span><span class="pill">Sistarbanc (UY)</span>
+            <span class="pill">Dauber & Asoc.</span><span class="pill">Mapfre</span><span class="pill">100+ en LATAM</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Presencia</span><span class="ival">México · Costa Rica · Paraguay · Uruguay · en expansión</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">Sin módulo de Cash/Flujo de fondos ni contabilidad. Foco en conciliación pura.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">72% — Alta</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:72%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-concbot);"></div>
-        <div>
-          <h4>ConciliaBot — Base instalada: Estudios contables y profesionales independientes</h4>
-          <span class="seg">Segmento: Contadores matriculados, estudios contables, PyMEs via contador</span>
-        </div>
+    <!-- ── SYC ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c6);">
+        <div class="comp-av">SY</div>
+        <div><h3>SYC Consulting</h3><div class="sub">Fundada 2001 · 17 países · Bancos y seguros</div></div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">GC Consultora</span><span class="client-pill">Estudio Ferreyra</span>
-        <span class="client-pill">M Asociados</span><span class="client-pill">Paola Ginestar (CPN)</span>
-        <span class="client-pill">Sofía Cejas (CPN)</span><span class="client-pill">+800 estudios en Argentina</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-legacy">Software tradicional</span>
+          <span class="tag t-erp">Multi-versión</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">sycconsulting.com</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Conciliación bancaria, cuentas corresponsales, ATM, tarjetas, cuentas puente. Versión Empresas y versión Bancos. Reducción 70-90% del tiempo.</span></div>
+        <div class="irow">
+          <span class="ilbl">Clientes</span>
+          <span class="ival">
+            <span class="pill">Banco Patagonia</span><span class="pill">Mapfre Argentina</span>
+            <span class="pill">La Caja Seguros</span><span class="pill">SURA Chile</span>
+            <span class="pill">Banco General Panamá</span><span class="pill">QBE Ecuador</span>
+          </span>
+        </div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">UI de 2001 sin renovar. Sin cloud. Sin IA. Foco casi exclusivo en bancos/seguros, muy lejos de PyMEs.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">55% — Moderada</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:55%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-cucuru);"></div>
-        <div>
-          <h4>Cucurú — Base instalada: Distribuidoras y empresas B2B</h4>
-          <span class="seg">Segmento: Empresas con cobranzas B2B frecuentes, logística y distribución</span>
-        </div>
+    <!-- ── CONCILIABOT ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c3);">
+        <div class="comp-av">CB</div>
+        <div><h3>ConciliaBot</h3><div class="sub">Contatech · 800+ estudios contables · IA generativa</div></div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">Sector logístico / distribución (no declarados)</span>
-        <span class="client-pill">Retail B2B en ARG, MX y BR</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-ai">IA / LLM</span>
+          <span class="tag t-cloud">Cloud nativo</span>
+          <span class="tag t-saas">Sin instalación</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">contatech.org/conciliabot</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Asistente IA para contadores: conciliación bancaria, retenciones/percepciones, consultas masivas ARCA, asientos automáticos, notificaciones WhatsApp.</span></div>
+        <div class="irow"><span class="ilbl">Precio</span><span class="ival">$40.000 ARS/mes (ConciliaBot) · $52.000 ARS/mes (Plus)</span></div>
+        <div class="irow"><span class="ilbl">KPI</span><span class="ival">4.8★ satisfacción · Ahorro +7 días/mes · 800+ estudios activos</span></div>
+        <div class="irow"><span class="ilbl">Clientes</span><span class="ival">Estudios contables y profesionales independientes. Canal indirecto hacia PyMEs.</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">No es para el empresario, es para el contador. Sin auditoría de tarjetas ni medios de pago. Solo bancario/impositivo.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">58% — Moderada</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:58%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-pcbank);"></div>
-        <div>
-          <h4>PC Bank (PC Net) — Base instalada: Gastronomía, retail y salud</h4>
-          <span class="seg">Segmento: Empresas medianas-grandes con múltiples cuentas bancarias</span>
-        </div>
+    <!-- ── CUCURÚ ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c4);">
+        <div class="comp-av">CU</div>
+        <div><h3>Cucurú</h3><div class="sub">Infraestructura B2B · Transferencias inteligentes</div></div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">Arcos Dorados (McDonald's franq.)</span><span class="client-pill">Roemmers</span>
-        <span class="client-pill">ACCOR Hotels Argentina</span><span class="client-pill">Claro Argentina</span>
-        <span class="client-pill">Petrocuyo</span><span class="client-pill">Columbia (educación)</span>
-        <span class="client-pill">Grupo Disal</span><span class="client-pill">Cher (moda)</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-api">API-first</span>
+          <span class="tag t-cloud">Cloud nativo</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">cucuru.com</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">Cobranza B2B por transferencias inteligentes con datos enriquecidos. Imputación automática por cliente/POS. Acreditación en el día. 10× más barato que tarjetas.</span></div>
+        <div class="irow"><span class="ilbl">Presencia</span><span class="ival">Argentina · México · Brasil</span></div>
+        <div class="irow"><span class="ilbl">Segmento</span><span class="ival">Distribución, logística, retail B2B, e-commerce</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">Solo transferencias. Sin tarjetas, sin QR, sin bancario. Producto muy acotado en scope.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-success);font-weight:700;">40% — Baja</span></div>
+          <div class="threat-track"><div class="tf tf-l" style="width:40%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-syc);"></div>
-        <div>
-          <h4>SYC Consulting — Base instalada: Instituciones financieras y seguros</h4>
-          <span class="seg">Segmento: Bancos, aseguradoras y empresas de servicios financieros LATAM</span>
-        </div>
+    <!-- ── FLEXXUS ── -->
+    <div class="comp-card">
+      <div class="comp-hdr" style="background:var(--c10);">
+        <div class="comp-av">FX</div>
+        <div><h3>Flexxus</h3><div class="sub">⚠ Nuevo · ERP + conciliación · 5.000 empresas ARG</div></div>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">Banco Patagonia</span><span class="client-pill">Mapfre Argentina</span>
-        <span class="client-pill">La Caja (seguros)</span><span class="client-pill">SURA Seguros Chile</span>
-        <span class="client-pill">Banco General Panamá</span><span class="client-pill">QBE La Colonial (Ecuador)</span>
-        <span class="client-pill">Mapfre Atlas (Ecuador)</span>
+      <div class="comp-body">
+        <div class="tags">
+          <span class="tag t-erp">ERP completo</span>
+          <span class="tag t-saas">SaaS</span>
+          <span class="tag t-new">Descubierto nuevo</span>
+        </div>
+        <div class="irow"><span class="ilbl">Web</span><span class="ival">flexxus.com.ar</span></div>
+        <div class="irow"><span class="ilbl">Core</span><span class="ival">ERP argentino para PyMEs con módulo de conciliación bancaria y de tarjetas incluido. 5.000+ empresas activas en retail, manufactura, hotelería, distribución, agro.</span></div>
+        <div class="irow"><span class="ilbl">Clientes (muestra)</span><span class="ival">
+            <span class="pill">Hotel Wyndham Nordelta</span><span class="pill">Jockey Club</span>
+            <span class="pill">Hotel Howard Johnson</span><span class="pill">Bolsa de Cereales Córdoba</span>
+            <span class="pill">Club Náutico San Isidro</span><span class="pill">+5.000 más</span>
+        </span></div>
+        <div class="irow"><span class="ilbl">Segmento</span><span class="ival">PyME y mediana empresa argentina en todos los rubros</span></div>
+        <div class="irow"><span class="ilbl">Debilidad</span><span class="ival">La conciliación es un módulo secundario del ERP, no el producto principal. Sin IA. Sin dashboard ejecutivo de ingresos.</span></div>
+        <div class="threat">
+          <div class="threat-lbl"><span>Amenaza competitiva</span><span style="color:var(--nub-warning);font-weight:700;">65% — Moderada-alta</span></div>
+          <div class="threat-track"><div class="tf tf-m" style="width:65%"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="client-block">
-      <div class="client-block-header">
-        <div class="client-dot" style="background:var(--c-concliac);"></div>
-        <div>
-          <h4>Conciliac IDM — Base instalada: Multinacionales y grandes corporaciones</h4>
-          <span class="seg">Segmento: Grandes corporaciones con operaciones complejas multi-entidad</span>
-        </div>
+  </div>
+</section>
+
+<!-- ──────── TABLA COMPARATIVA ──────── -->
+<section class="section" id="comparativa">
+  <div class="sec-hdr">
+    <div class="sec-num">2</div>
+    <div>
+      <h2>Tabla Comparativa de Producto</h2>
+      <p>10 funcionalidades clave comparadas entre todos los jugadores y Nubceo</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Plataforma</th>
+          <th>Concil. Bancaria</th>
+          <th>Concil. Tarjetas/Wallets</th>
+          <th>Cash / Flujo Fondos</th>
+          <th>Contabilidad / Asientos</th>
+          <th>Analíticos / Dashboard</th>
+          <th>IA / ML</th>
+          <th>API / Integraciones</th>
+          <th>UX Moderna</th>
+          <th>Cloud nativo</th>
+          <th>Precio público</th>
+          <th>Segmento principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AUDITARpays</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span> 500+ medios</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> SAP only</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> SAP</td>
+          <td><span class="cx">✗</span> Legacy</td>
+          <td><span class="cp">◑</span> Híbrido</td>
+          <td><span class="cx">✗</span></td>
+          <td>Grandes corp.</td>
+        </tr>
+        <tr>
+          <td>Conciliac IDM</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> Reportes</td>
+          <td><span class="ck">✔</span> IA+RPA</td>
+          <td><span class="ck">✔</span> API/FTP</td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>Multinacional</td>
+        </tr>
+        <tr>
+          <td>DATAPOS</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> Alertas</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cp">◑</span> Trial</td>
+          <td>Comercios/Retail</td>
+        </tr>
+        <tr>
+          <td>PC Bank</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cp">◑</span> Módulo aparte</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> Excel</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> DATANET</td>
+          <td><span class="cx">✗</span> Legacy</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>Retail / Gastro.</td>
+        </tr>
+        <tr>
+          <td>Atana SoftCard</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> 85% auto</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> ERP</td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>Hotelería/Retail</td>
+        </tr>
+        <tr>
+          <td>DaMap</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span> Dashboard</td>
+          <td><span class="ck">✔</span> IA</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span> Azure</td>
+          <td><span class="cx">✗</span></td>
+          <td>Mediana empresa</td>
+        </tr>
+        <tr>
+          <td>SYC Concilia</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span> 2001</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>Bancos/Seguros</td>
+        </tr>
+        <tr>
+          <td>ConciliaBot</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> Asientos auto</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> LLM</td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span> $40K ARS</td>
+          <td>Contadores</td>
+        </tr>
+        <tr>
+          <td>Cucurú</td>
+          <td><span class="cp">◑</span> Transfers.</td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="ck">✔</span> API</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>Distribución B2B</td>
+        </tr>
+        <tr>
+          <td>Flexxus</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span> Módulo ERP</td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span> ERP</td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="cx">✗</span></td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="cp">◑</span></td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="cx">✗</span></td>
+          <td>PyME general</td>
+        </tr>
+        <tr class="nub-row">
+          <td>✦ Nubceo</td>
+          <td><span class="ck">✔</span> MT940</td>
+          <td><span class="ck">✔</span> Multi-medio</td>
+          <td><span class="ck">✔</span> Nubceo Cash</td>
+          <td><span class="ck">✔</span> Asientos auto</td>
+          <td><span class="ck">✔</span> Analíticos Av.</td>
+          <td><span class="ck">✔</span></td>
+          <td><span class="ck">✔</span> API Connect</td>
+          <td><span class="ck">✔</span> Nativo</td>
+          <td><span class="ck">✔</span></td>
+          <td>—</td>
+          <td style="color:var(--nub-accent);font-weight:700;">PyME + Corp.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">✔ = Sí completo &nbsp;·&nbsp; ◑ = Parcial / módulo separado &nbsp;·&nbsp; ✗ = No disponible</p>
+  <p class="note" style="margin-top:4px;"><strong>Nubceo es el único jugador con los 5 módulos integrados: conciliación bancaria + tarjetas + Cash (flujo de fondos) + contabilidad + analíticos avanzados.</strong></p>
+</section>
+
+<!-- ──────── CLIENTES REALES ──────── -->
+<section class="section" id="clientes">
+  <div class="sec-hdr">
+    <div class="sec-num">3</div>
+    <div>
+      <h2>Clientes Reales Identificados</h2>
+      <p>Empresas confirmadas públicamente en sitios oficiales, prensa y testimonios — datos verificados en research directo</p>
+    </div>
+  </div>
+
+  <div class="cb-wrap">
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c1);"></div>
+        <h4>AUDITARpays — Grandes corporaciones, retail y energía</h4>
+        <span class="seg">+100 empresas líderes declaradas · 30 países</span>
       </div>
-      <div class="client-logos">
-        <span class="client-pill">Walmart Argentina</span><span class="client-pill">Ford Argentina</span>
-        <span class="client-pill">American Express</span><span class="client-pill">Santander</span>
-        <span class="client-pill">Volvo</span><span class="client-pill">BIC</span>
-        <span class="client-pill">Willis Towers Watson</span><span class="client-pill">Assist Card</span>
-        <span class="client-pill">Laboratorios Casasco</span><span class="client-pill">AJC Food</span>
+      <div class="client-pills">
+        <span class="cpill star">YPF</span><span class="cpill star">Carrefour Argentina</span>
+        <span class="cpill star">Cencosud</span><span class="cpill star">Aerolíneas Argentinas</span>
+        <span class="cpill">Farmacity</span><span class="cpill">McDonald's Argentina</span>
+        <span class="cpill">Frávega</span><span class="cpill">La Anónima</span>
+        <span class="cpill">Telecom Personal</span><span class="cpill">Soriana (México)</span>
       </div>
     </div>
-  </section>
 
-  <!-- ─── BUYER PERSONAS ─── -->
-  <section class="section" id="personas">
-    <div class="section-header">
-      <div class="section-num">3b</div>
-      <div>
-        <h2>Buyer Personas Identificadas</h2>
-        <p>Perfiles de decisor de compra por plataforma competidora</p>
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c7);"></div>
+        <h4>Conciliac IDM — Multinacionales y grandes corporaciones globales</h4>
+        <span class="seg">200+ clientes enterprise · Partners: Deloitte, SAP, PwC, Tata</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill star">Walmart GSS LATAM</span><span class="cpill star">Ford Argentina</span>
+        <span class="cpill star">American Express GBT</span><span class="cpill star">Santander</span>
+        <span class="cpill">Despegar.com</span><span class="cpill">Falabella</span><span class="cpill">McDonald's</span>
+        <span class="cpill">Cabify</span><span class="cpill">Ualá</span><span class="cpill">Embraer</span>
+        <span class="cpill">Boca Juniors</span><span class="cpill">Sheraton Hotels</span><span class="cpill">Volvo</span>
+        <span class="cpill">Amadeus</span><span class="cpill">BIC</span><span class="cpill">Assist Card</span>
+        <span class="cpill">Laboratorios Casasco</span><span class="cpill">Alto Palermo Shopping</span>
+        <span class="cpill">Willis Towers Watson</span><span class="cpill">Assurant</span>
       </div>
     </div>
 
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">🏢</div>
-          <div>
-            <div class="persona-title">El CFO Corporativo</div>
-            <div class="persona-sub">Target de: AUDITARpays, Conciliac</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Director Financiero o Gerente de Tesorería de empresa con +200 empleados. Maneja múltiples cuentas bancarias y medios de pago. Reporta al Directorio.<br/><strong>Qué busca:</strong> Auditoría completa, integración SAP, cero tolerancia al error, soporte enterprise.</p>
-        <div class="persona-pain">🔴 Pain point: Sus equipos pierden 3-5 días por mes en conciliación manual. Un error cuesta millones.</div>
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c9);"></div>
+        <h4>DATAPOS — Comercios masivos y retail</h4>
+        <span class="seg">5.000 clientes activos · 60M transacciones/mes · 70+ grandes marcas (no declaradas nominalmente)</span>
       </div>
-
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">🛒</div>
-          <div>
-            <div class="persona-title">El Gerente de Administración Retail</div>
-            <div class="persona-sub">Target de: AUDITARpays, Atana, PC Bank</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Responsable de administración y finanzas de cadena retail / franquicias / gastronomía. Gestiona ventas con tarjeta en múltiples locales.<br/><strong>Qué busca:</strong> Conciliar Posnet, QR, MercadoPago. Detectar contracargos. Controlar comisiones de adquirentes.</p>
-        <div class="persona-pain">🔴 Pain point: No sabe cuánto le cobran de comisiones reales vs. lo vendido. Descubre diferencias semanas después.</div>
-      </div>
-
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">📊</div>
-          <div>
-            <div class="persona-title">El Contador / Jefe de Estudio</div>
-            <div class="persona-sub">Target de: ConciliaBot</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Contador Público Nacional, atiende entre 20 y 80 empresas clientes. Usa herramientas como Bejerman, Tango, Xubio.<br/><strong>Qué busca:</strong> Automatizar la conciliación bancaria y de retenciones, reducir horas de trabajo, escalar su estudio.</p>
-        <div class="persona-pain">🔴 Pain point: Pierde +7 días/mes en conciliación manual. No puede crecer sin contratar más personas.</div>
-      </div>
-
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">🚛</div>
-          <div>
-            <div class="persona-title">El Gerente de Operaciones B2B</div>
-            <div class="persona-sub">Target de: Cucurú</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Responsable de cobranzas en distribuidora o empresa de logística. Gestiona decenas de clientes que pagan por transferencia.<br/><strong>Qué busca:</strong> Saber en tiempo real quién pagó, imputar automáticamente, evitar errores de asignación.</p>
-        <div class="persona-pain">🔴 Pain point: Las transferencias llegan sin identificación. Dedicar horas a cruzar quién pagó qué.</div>
-      </div>
-
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">🏦</div>
-          <div>
-            <div class="persona-title">El Tesorero de Banco / Aseguradora</div>
-            <div class="persona-sub">Target de: SYC Consulting</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Responsable de tesorería en banco, compañía de seguros o financiera. Gestiona cuentas corresponsales, inversiones y ATMs.<br/><strong>Qué busca:</strong> Software especializado, con versión para entidades bancarias, trayectoria regional demostrada.</p>
-        <div class="persona-pain">🔴 Pain point: Soluciones genéricas no entienden la complejidad bancaria (puentes, corresponsales, CUT-OFF).</div>
-      </div>
-
-      <div class="persona-card">
-        <div class="persona-header">
-          <div class="persona-icon">🌐</div>
-          <div>
-            <div class="persona-title">El Shared Services Manager</div>
-            <div class="persona-sub">Target de: Conciliac IDM</div>
-          </div>
-        </div>
-        <p class="persona-uses"><strong>Quién es:</strong> Líder de Centro de Servicios Compartidos en multinacional. Gestiona finanzas de múltiples entidades legales en varios países.<br/><strong>Qué busca:</strong> Plataforma que maneje millones de registros, IA para matching, conectores para SAP, Oracle, APIs.</p>
-        <div class="persona-pain">🔴 Pain point: Sus herramientas actuales no escalan. Las conciliaciones intercompany son un caos.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── OPORTUNIDADES ─── -->
-  <section class="section" id="oportunidades">
-    <div class="section-header">
-      <div class="section-num">4</div>
-      <div>
-        <h2>Fase 4 — Brechas de Mercado y Oportunidades para Nubceo</h2>
-        <p>Debilidades competitivas explotables y territorios sin cobertura</p>
+      <div class="client-pills">
+        <span class="cpill">70+ grandes marcas (no declaradas)</span>
+        <span class="cpill">5.000 comercios activos en Argentina</span>
       </div>
     </div>
 
-    <div class="opp-grid">
-      <div class="opp-card high">
-        <div class="opp-icon">🔴</div>
-        <h4>El "Vacío del Medio": PyME + Mediana Empresa</h4>
-        <p>AUDITAR y Conciliac apuntan a grandes corporaciones. ConciliaBot apunta a contadores. <strong>Nadie tiene un producto sólido para la empresa mediana</strong> (50-500 empleados) que necesita automatización sin presupuesto enterprise.</p>
-        <div class="action">↑ Prioridad Máxima — Territorio libre para Nubceo</div>
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c5);"></div>
+        <h4>PC Bank (PC Net) — Gastronomía, retail y salud</h4>
+        <span class="seg">Empresas medianas y grandes con múltiples cuentas bancarias</span>
       </div>
-
-      <div class="opp-card high">
-        <div class="opp-icon">🔴</div>
-        <h4>UX Legacy = Fricción de Adopción</h4>
-        <p>PC Bank, SYC y AUDITAR tienen interfaces Windows de los 2000s. Sus usuarios odian el producto pero no cambian por miedo a perder la base histórica. <strong>Una UX moderna es una ventaja competitiva real, no cosmética.</strong></p>
-        <div class="action">↑ Palanca de captación directa contra PC Bank y SYC</div>
-      </div>
-
-      <div class="opp-card med">
-        <div class="opp-icon">🟡</div>
-        <h4>Visibilidad de Ingresos en Tiempo Real</h4>
-        <p>Ningún competidor ofrece un <em>dashboard ejecutivo</em> que muestre el estado de ingresos en tiempo real cruzando ventas + cobranzas + conciliación. <strong>Los CFOs toman decisiones con datos del día anterior como mínimo.</strong></p>
-        <div class="action">↑ Diferencial estratégico — Nubceo lo puede tener</div>
-      </div>
-
-      <div class="opp-card med">
-        <div class="opp-icon">🟡</div>
-        <h4>Ausencia de Precio Público</h4>
-        <p>6 de 7 competidores no publican precios. Esto genera <em>fricción comercial enorme</em> y alarga los ciclos de venta. <strong>Nubceo puede posicionarse con pricing transparente y freemium/trial</strong> para captar el segmento moderno.</p>
-        <div class="action">↑ Ventaja go-to-market — Acelera pipeline de ventas</div>
-      </div>
-
-      <div class="opp-card info">
-        <div class="opp-icon">🔵</div>
-        <h4>E-Commerce y Marketplaces sin Cobertura Real</h4>
-        <p>Solo AUDITAR menciona Mercado Libre. Ninguno tiene integración nativa con <strong>Tiendanube, Shopify, VTEX, Rappi, PedidosYa</strong>. El comercio omnicanal crece y la conciliación no lo acompaña.</p>
-        <div class="action">↑ Oportunidad de nicho — Comercio electrónico y delivery</div>
-      </div>
-
-      <div class="opp-card info">
-        <div class="opp-icon">🔵</div>
-        <h4>Franquicias y Cadenas Multi-Punto</h4>
-        <p>Arcos Dorados usa PC Bank, pero las cadenas medianas (franquicias de 5-50 locales) no tienen una solución específica para <strong>conciliar por local, por franquiciado y consolidado</strong>. Es un segmento desatendido.</p>
-        <div class="action">↑ Vertical específico con alta disposición a pagar</div>
-      </div>
-
-      <div class="opp-card med">
-        <div class="opp-icon">🟡</div>
-        <h4>Integración con Nuevos Medios de Pago</h4>
-        <p>Billeteras digitales (Ualá, Naranja X, Modo), DEBIN 2.0, transferencias 3.0. Los competidores legacy tardan meses en incorporar nuevos medios. <strong>Nubceo puede ser el primero en integrar cada nuevo actor del ecosistema.</strong></p>
-        <div class="action">↑ Velocidad de adaptación como ventaja estructural</div>
-      </div>
-
-      <div class="opp-card high">
-        <div class="opp-icon">🔴</div>
-        <h4>Clientes de PC Bank y SYC Disponibles para Migrar</h4>
-        <p>PC Bank requiere instalación y mínimo 1.000 ops/mes. SYC tiene UI de 2001. Sus clientes son empresas reales (Arcos Dorados, Roemmers, Mapfre) con contratos que vencen. <strong>Un pitch de modernización dirigido a sus bases es una oportunidad inmediata.</strong></p>
-        <div class="action">↑ Acción comercial directa — Targeting de clientes legacy</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CONCLUSIONES ─── -->
-  <section class="section" id="conclusiones">
-    <div class="section-header">
-      <div class="section-num">★</div>
-      <div>
-        <h2>Conclusiones Estratégicas</h2>
-        <p>Posicionamiento recomendado de Nubceo frente al ecosistema analizado</p>
+      <div class="client-pills">
+        <span class="cpill star">Arcos Dorados (McDonald's franquicia)</span>
+        <span class="cpill star">Roemmers (farmacéutica)</span>
+        <span class="cpill">ACCOR Hotels Argentina</span>
+        <span class="cpill">Claro Argentina</span><span class="cpill">Petrocuyo</span>
+        <span class="cpill">Columbia (educación)</span><span class="cpill">Grupo Disal</span><span class="cpill">Cher (moda)</span>
       </div>
     </div>
 
-    <div class="swot-grid">
-      <div class="swot-cell swot-S">
-        <h4>✓ Fortalezas del Ecosistema (Aprender)</h4>
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c6);"></div>
+        <h4>SYC Consulting — Bancos y aseguradoras LATAM</h4>
+        <span class="seg">Instituciones financieras · 17 países · Desde 2001</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill">Banco Patagonia</span><span class="cpill">Mapfre Argentina</span>
+        <span class="cpill">La Caja Seguros</span><span class="cpill">SURA Seguros Chile</span>
+        <span class="cpill">Banco General Panamá</span><span class="cpill">QBE La Colonial (Ecuador)</span>
+        <span class="cpill">Mapfre Atlas (Ecuador)</span>
+      </div>
+    </div>
+
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c2);"></div>
+        <h4>Atana SoftCard — Hotelería y transporte</h4>
+        <span class="seg">20+ años en LATAM · Outsourcing de reclamos incluido</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill">Hertz Argentina</span><span class="cpill">Hotel Madero (CABA)</span>
+        <span class="cpill">Grupo Rosales</span>
+      </div>
+    </div>
+
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c8);"></div>
+        <h4>DaMap — Supermercados y servicios financieros LATAM</h4>
+        <span class="seg">100+ clientes · Azure Cloud · Uruguay, México, Costa Rica, Paraguay</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill star">Supermercados Liro (Ubesur, Uruguay)</span>
+        <span class="cpill">Sistarbanc (Uruguay)</span><span class="cpill">Mapfre</span>
+        <span class="cpill">Dauber & Asociados</span><span class="cpill">Pilar S.A.</span>
+      </div>
+    </div>
+
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c10);"></div>
+        <h4>Flexxus — PyMEs argentinas de todos los rubros</h4>
+        <span class="seg">5.000+ empresas · ERP con módulo de conciliación incluido</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill">Hotel Wyndham Nordelta</span><span class="cpill">Jockey Club</span>
+        <span class="cpill">Hotel Howard Johnson</span><span class="cpill">Bolsa de Cereales Córdoba</span>
+        <span class="cpill">Club Náutico San Isidro</span><span class="cpill">Hotel Provincial Sierra Ventana</span>
+        <span class="cpill">+5.000 PyMEs en retail, manufactura, agro y servicios</span>
+      </div>
+    </div>
+
+    <div class="cb">
+      <div class="cb-top">
+        <div class="cb-dot" style="background:var(--c3);"></div>
+        <h4>ConciliaBot — Estudios contables y profesionales</h4>
+        <span class="seg">800+ estudios contables activos · Canal indirecto a PyMEs</span>
+      </div>
+      <div class="client-pills">
+        <span class="cpill">GC Consultora</span><span class="cpill">Estudio Ferreyra</span>
+        <span class="cpill">M Asociados</span><span class="cpill">Paola Ginestar (CPN)</span>
+        <span class="cpill">Sofía Cejas (CPN)</span><span class="cpill">+800 estudios activos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── TESTIMONIOS REALES ──────── -->
+<section class="section" id="testimonios">
+  <div class="sec-hdr">
+    <div class="sec-num">4</div>
+    <div>
+      <h2>Testimonios Reales de Clientes Competidores</h2>
+      <p>Citas verificadas extraídas de sitios oficiales — útiles para entender los pain points que Nubceo puede resolver mejor</p>
+    </div>
+  </div>
+
+  <div class="testy-grid">
+    <div class="testy">
+      <blockquote>"Con Conciliac lo hacemos en horas, cuando haciéndolo manualmente nos llevaba días o semanas."</blockquote>
+      <div class="attr">Ricardo Gayol <span>· Jefe de Aplicaciones, Laboratorios Casasco</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Conciliac ha ayudado a estandarizar nuestros procesos de conciliación y aumentar la productividad. La herramienta no sólo es fácil de usar, sino también confiable."</blockquote>
+      <div class="attr">Tizoc Suarez <span>· Sr. Director Information Systems, Walmart GSS LATAM</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Esta valiosa e innovadora herramienta optimiza nuestros recursos y ofrece soluciones altamente eficientes."</blockquote>
+      <div class="attr">Federico Rodríguez <span>· ADM Supervisor Revenue Assurance, Despegar</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Conciliac es más que una herramienta de conciliación. Su versatilidad y simplicidad lo hacen fácil de usar para procesos nunca antes imaginados."</blockquote>
+      <div class="attr">Enrique Castigniani <span>· Quality & Process Development, American Express GBT</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Conciliac es una excelente solución que nos ahorra costos operativos, optimiza el tiempo y elimina errores."</blockquote>
+      <div class="attr">Pablo Chalen <span>· Regional General Manager, Amadeus</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Ahora hacemos conciliaciones semanales, con reportes auditables y ordenados. El equipo dedica su tiempo a decisión, no a digitación."</blockquote>
+      <div class="attr">Nadia Muñoz <span>· Coordinadora Administrativa, Supermercados Liro (DaMap)</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"La clave es que se recuperan fondos. Hay millones de pesos que se recuperan por ordenar esta información."</blockquote>
+      <div class="attr">Ejecutiva de AUDITAR <span>· Citada en iProup sobre clientes YPF, Carrefour y Personal</span></div>
+    </div>
+    <div class="testy">
+      <blockquote>"Con DaMap dejamos atrás los errores humanos. El equipo ahora se dedica a lo que realmente importa."</blockquote>
+      <div class="attr">Cliente DaMap <span>· Empresa no identificada, América Latina</span></div>
+    </div>
+  </div>
+  <p class="note mt16">💡 <strong>Insight para ventas:</strong> Los pain points más repetidos son (1) tiempo perdido en procesos manuales, (2) errores humanos que cuestan dinero real, (3) falta de visibilidad en tiempo real. Nubceo ataca los tres.</p>
+</section>
+
+<!-- ──────── A QUIÉN ATACAR ──────── -->
+<section class="section" id="ataque">
+  <div class="sec-hdr">
+    <div class="sec-num">5</div>
+    <div>
+      <h2>Mapa de Ataque: A Quién Ir y Cómo</h2>
+      <p>Prioridad de captación basada en debilidades reales detectadas y base de clientes disponibles</p>
+    </div>
+  </div>
+
+  <div class="attack-grid">
+
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-danger);">
+        <div class="icon">🎯</div>
+        <div><h4>Clientes de PC Bank</h4><div class="sub">Prioridad 1 — Atacar YA</div></div>
+      </div>
+      <div class="attack-body">
+        <p>Arcos Dorados, Roemmers, ACCOR, Claro, Petrocuyo y cientos más usan un software instalable de 2001. Sin cloud, sin IA, sin dashboard. Son clientes con dolor real.</p>
         <ul>
-          <li><span></span>AUDITAR: 30 años de confianza en grandes empresas. La expertise sectorial es su activo.</li>
-          <li><span></span>Conciliac: IA que funciona para datos masivos. El camino técnico correcto.</li>
-          <li><span></span>ConciliaBot: Precio público + trial = pipeline acelerado. Modelo a replicar.</li>
-          <li><span></span>Cucurú: API-first. La arquitectura que el mercado moderno exige.</li>
+          <li>Pitch: "¿Cuántos días perdés en conciliación con PC Bank? Nubceo lo hace en minutos."</li>
+          <li>Demo enfocada en UX moderna vs. pantallas legacy de PC Bank</li>
+          <li>Mostrar dashboard de ingresos en tiempo real como killer feature</li>
+          <li>Migración sin dolor: importás los datos históricos desde el primer día</li>
         </ul>
-      </div>
-      <div class="swot-cell swot-W">
-        <h4>✗ Debilidades del Ecosistema (Explotar)</h4>
-        <ul>
-          <li><span></span>UX obsoleta en 4 de 7 competidores: barrera de adopción enorme.</li>
-          <li><span></span>Sin visibilidad de ingresos en tiempo real en ningún jugador.</li>
-          <li><span></span>Vacío total en empresas medianas (50-500 empleados).</li>
-          <li><span></span>Sin integración nativa con e-commerce (Tiendanube, Shopify, Rappi).</li>
-          <li><span></span>Precios opacos generan ciclos de venta largos e innecesarios.</li>
-        </ul>
-      </div>
-      <div class="swot-cell swot-O">
-        <h4>→ Oportunidades para Nubceo</h4>
-        <ul>
-          <li><span></span>Posicionarse como "el AUDITAR moderno" para PyMEs y medianas empresas.</li>
-          <li><span></span>Captar clientes de PC Bank y SYC ofreciendo migración sin dolor.</li>
-          <li><span></span>Vertical de franquicias multi-punto: mercado desatendido con alto LTV.</li>
-          <li><span></span>Ser el primero en integrar cada nuevo medio de pago del ecosistema.</li>
-          <li><span></span>Dashboard ejecutivo de ingresos: diferencial sin competencia actual.</li>
-        </ul>
-      </div>
-      <div class="swot-cell swot-T">
-        <h4>⚠ Amenazas a Monitorear</h4>
-        <ul>
-          <li><span></span>AUDITAR puede modernizar su UX con una inversión puntual.</li>
-          <li><span></span>Conciliac ya tiene IA + grandes clientes. Puede bajar al segmento medio.</li>
-          <li><span></span>Nuevos entrantes fintech (ConciliaBot) capturan contadores antes que Nubceo.</li>
-          <li><span></span>Los ERPs (SAP, Oracle, Tango) podrían incorporar conciliación nativa.</li>
-        </ul>
+        <span class="pitch-tag pt-hot">Alta conversión potencial</span>
       </div>
     </div>
 
-    <div class="callout">
-      <h3>Recomendaciones Estratégicas para el Equipo Comercial de Nubceo</h3>
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-danger);">
+        <div class="icon">🎯</div>
+        <div><h4>Clientes de SYC Consulting</h4><div class="sub">Prioridad 1 — UI de 2001</div></div>
+      </div>
+      <div class="attack-body">
+        <p>Banco Patagonia, Mapfre, La Caja, SURA: instituciones que usan un software que no tuvo renovación visual en 20 años. Cualquier propuesta moderna los hace dudar de su proveedor.</p>
+        <ul>
+          <li>Pitch: "Tu software de conciliación tiene la misma UI que Windows XP. ¿Tu equipo merece algo mejor?"</li>
+          <li>Enfocar en el costo oculto del tiempo de capacitación en interfaces viejas</li>
+          <li>Destacar que Nubceo tiene actualizaciones continuas y roadmap público</li>
+          <li>Seguro e instituciones financieras medianas son el sweet spot</li>
+        </ul>
+        <span class="pitch-tag pt-hot">Alta conversión potencial</span>
+      </div>
+    </div>
+
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-warning);">
+        <div class="icon">⚡</div>
+        <div><h4>Clientes de DATAPOS</h4><div class="sub">Prioridad 2 — Upsell masivo</div></div>
+      </div>
+      <div class="attack-body">
+        <p>5.000 comercios que hoy solo tienen conciliación de tarjetas. No tienen bancario, no tienen Cash, no tienen analíticos. Es un cliente que ya pagó y ya confía en el concepto.</p>
+        <ul>
+          <li>Pitch: "DATAPOS te dice cuánto cobrar. Nubceo te dice además cuándo llega, qué impacto tiene y cómo planificás tu caja."</li>
+          <li>El módulo Cash (flujo de fondos) es la extensión natural de lo que ya usan</li>
+          <li>Mostrar la plataforma integrada vs. el producto único de DATAPOS</li>
+          <li>Gastronomía y retail multi-sucursal son perfiles perfectos</li>
+        </ul>
+        <span class="pitch-tag pt-med">Conversión media-alta</span>
+      </div>
+    </div>
+
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-warning);">
+        <div class="icon">⚡</div>
+        <div><h4>Clientes de Flexxus</h4><div class="sub">Prioridad 2 — 5.000 PyMEs disponibles</div></div>
+      </div>
+      <div class="attack-body">
+        <p>5.000 empresas que usan un ERP con conciliación como módulo de segundo orden. No es su producto principal, no invierten en mejorarlo, el usuario está frustrado.</p>
+        <ul>
+          <li>Pitch: "Flexxus es un ERP. Nubceo es especialista en ingresos. ¿Preferís un generalist o un specialist?"</li>
+          <li>Enfocar en profundidad del módulo financiero vs. amplitud del ERP</li>
+          <li>Gastronomía, hotelería y distribución son los mejores perfiles de Flexxus</li>
+          <li>Proponer integración Nubceo + Flexxus (no reemplazar el ERP)</li>
+        </ul>
+        <span class="pitch-tag pt-med">Conversión media</span>
+      </div>
+    </div>
+
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-blue);">
+        <div class="icon">🔵</div>
+        <div><h4>Clientes indirectos de ConciliaBot</h4><div class="sub">Prioridad 3 — Via contadores</div></div>
+      </div>
+      <div class="attack-body">
+        <p>800 estudios contables que tienen decenas de clientes PyME cada uno. El contador es el canal de distribución perfecto. Si Nubceo gana al contador, gana a sus clientes.</p>
+        <ul>
+          <li>Crear un programa de partners para estudios contables</li>
+          <li>ConciliaBot no tiene módulo de medios de pago — Nubceo sí</li>
+          <li>El contador que usa ConciliaBot para bancario puede recomendar Nubceo para tarjetas</li>
+          <li>Comisión por referidos para contadores que incorporen Nubceo a sus clientes</li>
+        </ul>
+        <span class="pitch-tag pt-info">Canal de distribución</span>
+      </div>
+    </div>
+
+    <div class="attack-card">
+      <div class="attack-hdr" style="background:var(--nub-blue);">
+        <div class="icon">🔵</div>
+        <div><h4>Empresas nuevas sin herramienta aún</h4><div class="sub">Prioridad 3 — Greenfield</div></div>
+      </div>
+      <div class="attack-body">
+        <p>El mercado de software de contabilidad en Argentina vale $21M USD y crece 10%+ anual. Muchas empresas medianas en gastronomía, farmacia y retail todavía usan Excel.</p>
+        <ul>
+          <li>Nubceo ya opera en gastronomía, farmacéutica, ferretería e indumentaria</li>
+          <li>Tienda Nube marketplace: Nubceo ya está integrado — canal con miles de comercios</li>
+          <li>Franquicias 5-50 locales: mercado completamente sin cobertura especializada</li>
+          <li>Trial o freemium para reducir el ciclo de venta a clientes nuevos</li>
+        </ul>
+        <span class="pitch-tag pt-info">Crecimiento orgánico</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──────── BUYER PERSONAS ──────── -->
+<section class="section" id="personas">
+  <div class="sec-hdr">
+    <div class="sec-num">6</div>
+    <div>
+      <h2>Buyer Personas del Mercado</h2>
+      <p>Perfiles reales de decisores de compra identificados a partir de testimonios, clientes y segmentos de cada competidor</p>
+    </div>
+  </div>
+
+  <div class="persona-grid">
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">🏢</div>
+        <div><h4>El CFO Corporativo</h4><div class="sub">Target de AUDITAR · Conciliac</div></div>
+      </div>
+      <p><strong>Perfil:</strong> Director Financiero o Gerente de Tesorería, empresa +200 personas. Maneja SAP, múltiples cuentas bancarias y medios. Reporta al Directorio.</p>
+      <p><strong>Qué busca:</strong> Cero errores, integración SAP, auditoría completa, soporte enterprise 24/7.</p>
+      <div class="persona-pain">🔴 Pain: Su equipo pierde 5 días/mes en conciliación. Un error de conciliación puede costar millones. No sabe cuánto le cobran de comisiones realmente.</div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">🛒</div>
+        <div><h4>El Gerente de Admin. Retail</h4><div class="sub">Target de PC Bank · AUDITAR · DATAPOS</div></div>
+      </div>
+      <p><strong>Perfil:</strong> Responsable de administración y finanzas en cadena retail o franquicia. Gestiona ventas con tarjeta en múltiples locales, muchas veces con Tango o Bejerman.</p>
+      <p><strong>Qué busca:</strong> Conciliar Posnet, QR, MercadoPago. Ver diferencias por local. Detectar contracargos. Controlar comisiones reales vs. vendido.</p>
+      <div class="persona-pain">🔴 Pain: Descubre diferencias semanas después. No sabe cuánto le cobran de más. El control lo hace en Excel con riesgo de error humano.</div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">🍔</div>
+        <div><h4>El Dueño/Gerente de Gastronomía</h4><div class="sub">Segmento sin cubrir — Nubceo ideal</div></div>
+      </div>
+      <p><strong>Perfil:</strong> Propietario o gerente de cadena gastronómica de 3-20 locales. Usa Rappi, PedidosYa, MercadoPago, Payway. Sin equipo de finanzas robusto.</p>
+      <p><strong>Qué busca:</strong> Ver cuánto llegó de cada plataforma, cuánto queda después de comisiones. Flujo de caja simple y claro.</p>
+      <div class="persona-pain">🔴 Pain: No sabe si Rappi le pagó lo correcto. Tarda 3 días en cerrar el mes. No tiene equipo para hacer el trabajo manual.</div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">📊</div>
+        <div><h4>El Contador / Jefe de Estudio</h4><div class="sub">Target de ConciliaBot</div></div>
+      </div>
+      <p><strong>Perfil:</strong> CPN, atiende 20-80 clientes PyMEs. Usa Bejerman, Tango, Xubio. Presupuesto ajustado, quiere herramientas que lo hagan escalar sin contratar.</p>
+      <p><strong>Qué busca:</strong> Automatizar bancario, retenciones, ARCA. Ahorrar horas. Recomendarle algo mejor a sus clientes empresas.</p>
+      <div class="persona-pain">🔴 Pain: Pierde +7 días/mes en conciliación manual. No puede crecer su cartera sin más personal.</div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">🏥</div>
+        <div><h4>El CFO de Mediana Empresa</h4><div class="sub">Target natural de Nubceo</div></div>
+      </div>
+      <p><strong>Perfil:</strong> Director Financiero o Contador en empresa de 50-500 empleados (farmacéutica, ferretería, indumentaria). Quiere profesionalizar su gestión.</p>
+      <p><strong>Qué busca:</strong> Plataforma integrada que no sea tan cara como AUDITAR ni tan básica como DATAPOS. UX moderna. Dashboard ejecutivo.</p>
+      <div class="persona-pain">🔴 Pain: Las herramientas enterprise le quedan grandes. Las herramientas básicas le quedan chicas. Está atrapado en el medio.</div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <div class="persona-icon">🚛</div>
+        <div><h4>El Gerente de Operaciones B2B</h4><div class="sub">Target de Cucurú</div></div>
+      </div>
+      <p><strong>Perfil:</strong> Responsable de cobranzas en distribuidora o empresa de logística. Gestiona decenas de clientes que pagan por transferencia.</p>
+      <p><strong>Qué busca:</strong> Saber en tiempo real quién pagó, imputar automáticamente, evitar errores de asignación entre clientes.</p>
+      <div class="persona-pain">🔴 Pain: Las transferencias llegan sin identificación. Dedica horas a cruzar quién pagó qué. Los errores generan conflictos con clientes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── BRECHAS ──────── -->
+<section class="section" id="brechas">
+  <div class="sec-hdr">
+    <div class="sec-num">7</div>
+    <div>
+      <h2>Brechas de Mercado Detectadas</h2>
+      <p>Debilidades reales del ecosistema que Nubceo puede convertir en ventajas comerciales concretas</p>
+    </div>
+  </div>
+
+  <div class="gap-grid">
+    <div class="gap-card p1">
+      <div class="gi">🔴</div>
+      <h4>La "Trampa del Medio" — PyME mediana sin solución</h4>
+      <p>AUDITAR y Conciliac cobran enterprise. DATAPOS y ConciliaBot son demasiado básicos. Las empresas de 50-500 empleados no tienen una plataforma integrada adecuada. <strong>Es el mercado más grande y menos atendido.</strong></p>
+      <div class="action">↑ Máxima prioridad — Territorio natural de Nubceo</div>
+    </div>
+
+    <div class="gap-card p1">
+      <div class="gi">🔴</div>
+      <h4>UX Legacy = Dolor de usuario diario</h4>
+      <p>PC Bank, SYC y AUDITAR tienen interfaces Windows de los 90s-2000s. Sus usuarios las odian pero no cambian por miedo a perder historial. Una demo de Nubceo al lado de PC Bank cierra sola.</p>
+      <div class="action">↑ Palanca directa — Demo comparativa en cada venta</div>
+    </div>
+
+    <div class="gap-card p1">
+      <div class="gi">🔴</div>
+      <h4>Módulo Cash = Nadie lo tiene bien hecho</h4>
+      <p>Ningún competidor ofrece un módulo de flujo de fondos (Cash) integrado con la conciliación de ingresos. Nubceo Cash es único en el mercado. Es la "killer feature" que no tiene ningún rival.</p>
+      <div class="action">↑ Diferencial insuperable — Demostrar en toda demo</div>
+    </div>
+
+    <div class="gap-card p2">
+      <div class="gi">🟡</div>
+      <h4>E-Commerce y Delivery sin cobertura real</h4>
+      <p>Rappi, PedidosYa, Tiendanube, Shopify: solo AUDITAR menciona Mercado Libre. El sector de gastronomía con delivery y e-commerce crece y no tiene una solución de conciliación específica.</p>
+      <div class="action">↑ Vertical gastronomía + delivery — Nubceo ya está en Tiendanube</div>
+    </div>
+
+    <div class="gap-card p2">
+      <div class="gi">🟡</div>
+      <h4>Sin precio público = Ciclos de venta largos</h4>
+      <p>9 de 10 competidores no publican precios. Los compradores piden 3 cotizaciones, tardan semanas en decidir. Nubceo puede acelerar el ciclo con precios transparentes o un trial claro.</p>
+      <div class="action">↑ Ventaja go-to-market — Reducir el tiempo de decisión</div>
+    </div>
+
+    <div class="gap-card p2">
+      <div class="gi">🟡</div>
+      <h4>Franquicias multi-punto sin solución especializada</h4>
+      <p>Arcos Dorados usa PC Bank pero una cadena mediana de 5-50 locales no tiene una herramienta específica que consolide por local, por franquiciado y total. Nicho con alta disposición a pagar.</p>
+      <div class="action">↑ Vertical franquicias — Alto LTV y baja competencia</div>
+    </div>
+
+    <div class="gap-card p3">
+      <div class="gi">🔵</div>
+      <h4>Nuevos medios de pago: nadie se adapta rápido</h4>
+      <p>Ualá, Naranja X, Modo, DEBIN 2.0, transferencias 3.0. Los legacy tardan meses en integrar cada medio nuevo. Nubceo puede ser el primero en soportar cada actor nuevo del ecosistema.</p>
+      <div class="action">↑ Velocidad de integración como ventaja estructural</div>
+    </div>
+
+    <div class="gap-card p3">
+      <div class="gi">🔵</div>
+      <h4>Canal contadores = 800 estudios × N clientes PyME</h4>
+      <p>ConciliaBot tiene 800 estudios contables. Cada estudio tiene 20-80 clientes empresas. Un programa de partners para contadores es un canal de distribución multiplicador inmediato.</p>
+      <div class="action">↑ Programa de partners — Crecimiento sin costo de adquisición directo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── CONCLUSIONES ──────── -->
+<section class="section" id="conclusiones">
+  <div class="sec-hdr">
+    <div class="sec-num">★</div>
+    <div>
+      <h2>Conclusiones Estratégicas</h2>
+      <p>Posicionamiento recomendado y acciones concretas para el equipo comercial de Nubceo</p>
+    </div>
+  </div>
+
+  <div class="swot">
+    <div class="swot-cell swot-S">
+      <h4>Fortalezas que diferencian a Nubceo</h4>
       <ul>
-        <li>Atacar activamente clientes de <strong>PC Bank</strong> y <strong>SYC</strong> con propuesta de migración: UX moderna + precio claro.</li>
-        <li>Desarrollar el vertical de <strong>franquicias gastronómicas</strong> (5-50 locales): ningún competidor lo atiende bien hoy.</li>
-        <li>Publicar precios o un modelo freemium/trial: reducirá el ciclo de venta vs. todos los competidores.</li>
-        <li>Construir integraciones con <strong>Tiendanube, Shopify, Rappi</strong>: territorio sin cobertura real.</li>
-        <li>El diferencial "dashboard de ingresos en tiempo real" debe ser el <strong>mensaje central</strong> en demos de venta.</li>
-        <li>ConciliaBot captura contadores → generar un <strong>programa de partnership con estudios contables</strong> para llegar a sus clientes PyME.</li>
-        <li>Monitorear <strong>Conciliac</strong>: es el competidor más peligroso a mediano plazo si baja al mercado medio.</li>
-        <li>Aprovechar que <strong>Cucurú y ConciliaBot no tienen auditoría de tarjetas</strong>: mostrar ese gap en toda conversación de venta.</li>
+        <li>Único con Cash + Conciliación + Contabilidad + Analíticos integrados</li>
+        <li>UX moderna vs. competidores legacy</li>
+        <li>Módulo Cash de flujo de fondos: inexistente en toda la competencia</li>
+        <li>Ya en Tiendanube marketplace — canal directo a miles de comercios</li>
+        <li>Sectores activos: gastronómico, farmacéutico, ferretero, indumentaria</li>
+        <li>Presencia Argentina + Uruguay con expansión a Brasil y Chile</li>
       </ul>
     </div>
-  </section>
+    <div class="swot-cell swot-W">
+      <h4>Debilidades a resolver para competir</h4>
+      <ul>
+        <li>Sin precio público → ciclo de venta largo</li>
+        <li>Clientes declarados públicamente escasos (vs. Conciliac con 200+)</li>
+        <li>Sin integración SAP certificada (bloqueador para AUDITAR territory)</li>
+        <li>Sin casos de éxito publicados con datos cuantitativos</li>
+        <li>Sin programa formal de partners para contadores</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-O">
+      <h4>Oportunidades inmediatas</h4>
+      <ul>
+        <li>Captar clientes de PC Bank y SYC con propuesta de modernización</li>
+        <li>Upsell a 5.000 clientes DATAPOS con módulos que les faltan</li>
+        <li>Vertical franquicias gastronómicas sin competidor especializado</li>
+        <li>Programa de partners con estudios contables (ConciliaBot territory)</li>
+        <li>Integración con Rappi/PedidosYa: e-commerce y delivery sin cobertura</li>
+        <li>Trial/freemium para reducir ciclo de venta vs. todos los rivales</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-T">
+      <h4>Amenazas a monitorear</h4>
+      <ul>
+        <li>AUDITAR puede invertir en UX nueva y bajar al segmento medio</li>
+        <li>Conciliac ya tiene IA + Deloitte/SAP: puede bajar de tier</li>
+        <li>DaMap crece en LATAM y podría entrar fuerte a Argentina</li>
+        <li>Los ERPs (Flexxus, Tango, Xubio) mejoran sus módulos financieros</li>
+        <li>DATAPOS puede agregar módulos y volverse plataforma completa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Plan de Acción para el Equipo de Ventas — Prioridades 2026</h3>
+    <ol>
+      <li>Identificar los <strong>clientes de PC Bank</strong> en tu zona: Arcos Dorados, ACCOR, Roemmers. Primer contacto con propuesta de demo.</li>
+      <li>Hacer un <strong>demo comparativa lado a lado</strong> de la UI de PC Bank/SYC vs. Nubceo. El módulo Cash es el cierre.</li>
+      <li>Trabajar el vertical <strong>gastronomía con delivery</strong> (Rappi, PedidosYa): no tiene competidor. Nubceo ya está posicionado ahí.</li>
+      <li>Crear un <strong>programa de referidos para contadores</strong> que usan ConciliaBot — ellos tienen 800 estudios con N clientes PyME cada uno.</li>
+      <li>Publicar al menos 3 <strong>casos de éxito con números</strong>: X días/mes ahorrados, $X recuperados, Y% reducción de errores.</li>
+      <li>Evaluar un <strong>trial gratuito de 15 días</strong> para reducir el ciclo de venta (DATAPOS ya lo ofrece, Nubceo debería también).</li>
+      <li>Monitorear mensualmente a <strong>Conciliac y DaMap</strong>: son los rivales que pueden bajar de tier y entrar al mercado medio.</li>
+      <li>Pitch para <strong>clientes de DATAPOS</strong>: "Ya sabés cuánto cobrar. Con Nubceo también sabés cuándo llega, qué impacto tiene y cómo planificás tu caja."</li>
+    </ol>
+  </div>
+</section>
 
 </main>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
+<!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-  <p>Reporte de Inteligencia Competitiva — <strong>Nubceo</strong> · Uso interno exclusivo · Abril 2026</p>
-  <p style="margin-top:6px;">Fuentes: sitios oficiales de competidores, iProup, LinkedIn, Contatech. Actualizar trimestralmente.</p>
+  <p>Reporte de Inteligencia Competitiva — <strong>Nubceo</strong> · Uso interno exclusivo · Versión 2.0 · Abril 2026</p>
+  <p style="margin-top:5px;">Fuentes verificadas: sitios oficiales, iProup, Microsoft News Center, Conciliac Clients Page, LinkedIn, Contatech. Actualizar trimestralmente.</p>
 </footer>
 
 </body>
