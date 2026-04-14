@@ -1,0 +1,16 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Datos sensibles / no subir
+*.env
+secrets/
+datos_clientes/
+crm_export*.csv
+
+# IDEs
+.vscode/settings.json
+.idea/
+
+# Claude Code
+.claude/settings.local.json
